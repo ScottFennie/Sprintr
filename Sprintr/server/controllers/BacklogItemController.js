@@ -7,11 +7,11 @@ export class BacklogItemController extends BaseController {
     super('api/projects/:projectId/backlog')
     this.router
       .get('', this.getBacklogItems)
-      .get('/:backlogItemId', this.getBacklogItemById)
+      .get('/:backlogId', this.getBacklogItemById)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createBacklogItem)
-      .put('/:backlogItemId', this.editBacklogItem)
-      .delete('/:backlogItemId', this.removeBacklogItem)
+      .put('/:backlogId', this.editBacklogItem)
+      .delete('/:backlogId', this.removeBacklogItem)
   }
 
   async getBacklogItemById(req, res, next) {
