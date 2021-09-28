@@ -8,7 +8,7 @@ export const NoteSchema = new Schema({
   creatorId: { type: Schema.Types.ObjectId, required: true, ref: 'Account' }
 }, { timestamps: true, toJSON: { virtuals: true } })
 
-NoteSchema.virtual('backlogitem', {
+NoteSchema.virtual('backlogitems', {
   localField: 'backlogItemId',
   foreignField: '_id',
   justOne: true,

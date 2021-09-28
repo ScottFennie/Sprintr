@@ -10,7 +10,7 @@ export const BacklogItemSchema = new Schema({
   creatorId: { type: Schema.Types.ObjectId, required: true, ref: 'Account' }
 }, { timestamps: true, toJSON: { virtuals: true } })
 
-BacklogItemSchema.virtual('sprint', {
+BacklogItemSchema.virtual('sprints', {
   localField: 'sprintId',
   foreignField: '_id',
   justOne: true,
