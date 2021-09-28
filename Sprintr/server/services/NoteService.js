@@ -11,12 +11,13 @@ class NoteService {
   }
 
   async getNotes(projectId) {
-    const notes = await dbContext.Notes.find({ projectId })
+    const notes = await dbContext.Notes.find({ projectId }).populate('creator', 'name picture')
     return notes
   }
 
   async createNote(noteData) {
     const note = await dbContext.Notes.create(noteData)
+    await note.populate('creator', 'name picture')
     return note
   }
 

@@ -34,6 +34,7 @@ export class NoteController extends BaseController {
   async createNote(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
+      req.body.projectId = req.params.projectId
       const note = await noteService.createNote(req.body)
       res.send(note)
     } catch (error) {

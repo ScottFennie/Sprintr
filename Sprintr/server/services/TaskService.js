@@ -15,6 +15,18 @@ class TaskService {
     return tasks
   }
 
+  async editTask(itemId, userId, itemData) {
+    const task = await this.getTaskById(itemId)
+    if (userId !== task.creatorId.toString()) {
+      throw new Forbidden('You cant do that! Stahp!')
+    }
+    task.name = itemData.name || task.name
+    task.weight = itemData.weight || task.weight
+    task.isComplete = itemData.isComplete || task.isComplete
+    await task.save()
+    return task
+  }
+
   async createTask(taskData) {
     const task = await dbContext.Tasks.create(taskData)
     return task

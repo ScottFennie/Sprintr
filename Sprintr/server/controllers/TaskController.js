@@ -9,6 +9,7 @@ export class TaskController extends BaseController {
       .get('', this.getTasks)
       .get('/:taskId', this.getTaskById)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .put('/:taskId', this.editTask)
       .post('', this.createTask)
       .delete('/:taskId', this.deleteTask)
   }
@@ -26,6 +27,15 @@ export class TaskController extends BaseController {
     try {
       const tasks = await taskService.getTasks(req.params.projectId)
       res.send(tasks)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async editTask(req, res, next) {
+    try {
+      const task = await taskService.editTask(req.params.taskId, req.userInfo.id, req.body)
+      res.send(task)
     } catch (error) {
       next(error)
     }
