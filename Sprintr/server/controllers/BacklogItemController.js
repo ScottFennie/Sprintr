@@ -16,7 +16,7 @@ export class BacklogItemController extends BaseController {
 
   async getBacklogItemById(req, res, next) {
     try {
-      const backlog = await backlogItemService.getBacklogItemById(req.params.BacklogItemId)
+      const backlog = await backlogItemService.getBacklogItemById(req.params.BacklogId)
       res.send(backlog)
     } catch (error) {
       next(error)
@@ -44,7 +44,7 @@ export class BacklogItemController extends BaseController {
 
   async editBacklogItem(req, res, next) {
     try {
-      const backlog = await backlogItemService.editBacklogItem(req.params.backlogItemId, req.userInfo.id, req.body)
+      const backlog = await backlogItemService.editBacklogItem(req.params.backlogId, req.userInfo.id, req.body)
       res.send(backlog)
     } catch (error) {
       next(error)
@@ -53,7 +53,7 @@ export class BacklogItemController extends BaseController {
 
   async removeBacklogItem(req, res, next) {
     try {
-      const backlog = await backlogItemService.removeBacklogItem(req.params.BacklogItemId)
+      const backlog = await backlogItemService.removeBacklogItem(req.params.BacklogId)
       res.send(backlog)
     } catch (error) {
       next(error)
