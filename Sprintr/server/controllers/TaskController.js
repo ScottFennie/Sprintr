@@ -4,7 +4,7 @@ import BaseController from '../utils/BaseController'
 
 export class TaskController extends BaseController {
   constructor() {
-    super('api/projects/:projectId/backlog/:backlogId/task')
+    super('api/projects/:projectId/tasks')
     this.router
       .get('', this.getTasks)
       .get('/:taskId', this.getTaskById)
@@ -43,7 +43,7 @@ export class TaskController extends BaseController {
 
   async deleteTask(req, res, next) {
     try {
-      const task = await taskService.deleteTask(req.params.sprintId, req.userInfo.id)
+      const task = await taskService.deleteTask(req.params.taskId, req.userInfo.id)
       res.send(task)
     } catch (error) {
       next(error)

@@ -28,6 +28,7 @@ class BacklogItemService {
     backlog.name = itemData.name || backlog.name
     backlog.description = itemData.description || backlog.description
     backlog.status = itemData.status || backlog.status
+    backlog.sprintId = itemData.sprintId || backlog.sprintId
     await backlog.save()
     return backlog
   }

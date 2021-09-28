@@ -6,7 +6,8 @@ export const TaskSchema = new Schema({
   weight: { type: Number, required: true },
   backlogItemId: { type: Schema.Types.ObjectId, required: true, ref: 'BacklogItem' },
   projectId: { type: Schema.Types.ObjectId, required: true, ref: 'Project' },
-  creatorId: { type: Schema.Types.ObjectId, required: true, ref: 'Account' }
+  creatorId: { type: Schema.Types.ObjectId, required: true, ref: 'Account' },
+  isComplete: { type: Boolean, default: false }
 }, { timestamps: true, toJSON: { virtuals: true } })
 
 TaskSchema.virtual('backlogitems', {

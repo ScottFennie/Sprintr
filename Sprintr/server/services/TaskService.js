@@ -16,7 +16,7 @@ class TaskService {
   }
 
   async createTask(taskData) {
-    const task = await dbContext.Sprints.create(taskData)
+    const task = await dbContext.Tasks.create(taskData)
     return task
   }
 
