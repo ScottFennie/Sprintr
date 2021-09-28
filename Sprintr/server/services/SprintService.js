@@ -10,8 +10,8 @@ class SprintService {
     return sprint
   }
 
-  async getSprints(query) {
-    const sprints = await dbContext.Sprints.find(query)
+  async getSprints(projectId) {
+    const sprints = await dbContext.Sprints.find({ projectId })
     return sprints
   }
 

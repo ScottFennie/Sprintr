@@ -24,7 +24,7 @@ export class SprintController extends BaseController {
 
   async getSprints(req, res, next) {
     try {
-      const sprints = await sprintService.getSprints(req.query)
+      const sprints = await sprintService.getSprints(req.params.projectId)
       res.send(sprints)
     } catch (error) {
       next(error)
