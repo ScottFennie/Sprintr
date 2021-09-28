@@ -1,15 +1,62 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
+import { backlogItemService } from '../services/BacklogItemService'
 import BaseController from '../utils/BaseController'
 
 export class BacklogItemController extends BaseController {
   constructor() {
     super('api/projects/:projectId/backlog')
     this.router
-      .get('', this.getBacklog)
-      .get('/:backlogId', this.getBacklogById)
+      .get('', this.getBacklogItems)
+      .get('/:backlogItemId', this.getBacklogItemById)
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .post('', this.createBacklog)
-      .put('/:backlogId', this.editBacklog)
-      .delete('/:backlogId', this.removeBacklog)
+      .post('', this.createBacklogItem)
+      .put('/:backlogItemId', this.editBacklogItem)
+      .delete('/:backlogItemId', this.removeBacklogItem)
+  }
+
+  async getBacklogItemById(req, res, next) {
+    try {
+      const backlog = await backlogItemService.getBacklogItemById(req.params.BacklogItemId)
+      res.send(backlog)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getBacklogItems(req, res, next) {
+    try {
+      const backlogs = await backlogItemService.getBacklogItems(req.params.projectId)
+      res.send(backlogs)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async createBacklogItem(req, res, next) {
+    try {
+      req.body.creatorId = req.userInfo.id
+      const backlog = await backlogItemService.createBacklogItem(req.body)
+      res.send(backlog)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async editBacklogItem(req, res, next) {
+    try {
+      const backlog = await backlogItemService.editBacklogItem(req.params.backlogItemId, req.userInfo.id, req.body)
+      res.send(backlog)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async removeBacklogItem(req, res, next) {
+    try {
+      const backlog = await backlogItemService.removeBacklogItem(req.params.BacklogItemId)
+      res.send(backlog)
+    } catch (error) {
+      next(error)
+    }
   }
 }
