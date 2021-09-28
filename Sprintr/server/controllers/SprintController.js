@@ -4,10 +4,10 @@ import BaseController from '../utils/BaseController'
 
 export class SprintController extends BaseController {
   constructor() {
-    super('api/sprints')
+    super('api/projects/:projectId/sprints')
     this.router
       .get('', this.getSprints)
-      .get('/:sprintId', this.getSprints)
+      .get('/:sprintId', this.getSprintById)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createSprint)
       .delete('/:sprintId', this.deleteSprint)
@@ -15,7 +15,7 @@ export class SprintController extends BaseController {
 
   async getSprintById(req, res, next) {
     try {
-      const sprint = await sprintService.getSprintById(req.params.projectId)
+      const sprint = await sprintService.getSprintById(req.params.sprintId)
       res.send(sprint)
     } catch (error) {
       next(error)
@@ -43,7 +43,7 @@ export class SprintController extends BaseController {
 
   async deleteSprint(req, res, next) {
     try {
-      const sprint = await sprintService.deleteSprint(req.params.projectId, req.userInfo.id)
+      const sprint = await sprintService.deleteSprint(req.params.sprintId, req.userInfo.id)
       res.send(sprint)
     } catch (error) {
       next(error)

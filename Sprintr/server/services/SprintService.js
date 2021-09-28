@@ -5,7 +5,7 @@ class SprintService {
   async getSprintById(sprintId) {
     const sprint = await dbContext.Sprints.findById(sprintId)
     if (!sprint) {
-      throw new BadRequest('invalid project Id')
+      throw new BadRequest('invalid sprint Id')
     }
     return sprint
   }
