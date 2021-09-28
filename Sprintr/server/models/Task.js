@@ -9,7 +9,7 @@ export const TaskSchema = new Schema({
   creatorId: { type: Schema.Types.ObjectId, required: true, ref: 'Account' }
 }, { timestamps: true, toJSON: { virtuals: true } })
 
-TaskSchema.virtual('backlogitem', {
+TaskSchema.virtual('backlogitems', {
   localField: 'backlogItemId',
   foreignField: '_id',
   justOne: true,
