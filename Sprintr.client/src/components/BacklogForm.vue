@@ -1,12 +1,13 @@
 <template>
-  <form @submit.prevent="handelSumbit()">
+  <form @submit.prevent="handleSubmit()">
     <div class="form-group">
-      <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+      <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic radio toggle button group">
         <input type="radio"
                class="btn-check"
                name="btnradio"
                id="btnradio1"
                autocomplete="off"
+               @click="editable.status = 'pending'"
                checked
         >
         <label class="btn btn-outline-primary" for="btnradio1">Pending</label>
@@ -16,6 +17,7 @@
                name="btnradio"
                id="btnradio2"
                autocomplete="off"
+               @click="editable.status = 'in-progress'"
         >
         <label class="btn btn-outline-primary" for="btnradio2">In-progress</label>
 
@@ -24,6 +26,7 @@
                name="btnradio"
                id="btnradio3"
                autocomplete="off"
+               @click="editable.status = 'review'"
         >
         <label class="btn btn-outline-primary" for="btnradio3">Review</label>
 
@@ -32,6 +35,7 @@
                name="btnradio"
                id="btnradio4"
                autocomplete="off"
+               @click="editable.status = 'done'"
         >
         <label class="btn btn-outline-primary" for="btnradio4">Done</label>
       </div>
@@ -62,15 +66,17 @@
 import { ref } from '@vue/reactivity'
 import Pop from '../utils/Pop'
 import { backlogsService } from '../services/BacklogsService'
+import { useRoute } from 'vue-router'
 export default {
   setup() {
+    const route = useRoute()
     const editable = ref({})
     return {
       editable,
       async handleSubmit() {
         try {
           if (editable.value) {
-            await backlogsService.editBacklog(editable.value)
+            await backlogsService.createBacklog(editable.value, route.params.projectId)
             Pop.toast('Backlog item edited', 'success')
           }
         } catch (error) {
