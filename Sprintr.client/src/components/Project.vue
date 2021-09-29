@@ -7,7 +7,7 @@
         </h6>
       </div>
       <div class="col-4 d-flex justify-content-center">
-        <img :src="account.picture" alt="" class="creatorpic">
+        <img :src="account.picture" alt="" class="shadow-sm creatorpic">
       </div>
       <div class="col-4 d-flex align-items-center justify-content-end">
         <h6 class="pe-1">
@@ -56,6 +56,7 @@ export default {
   border-bottom-left-radius: 50% 50%;
   height: 3rem;
   width: 3rem;
+  border: 2px solid #CF40AE;
 }
 
 </style>
