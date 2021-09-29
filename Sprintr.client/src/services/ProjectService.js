@@ -10,7 +10,7 @@ class ProjectService {
   }
 
   async goToProjectPage(projectId) {
-    const res = await api.get(`api/projects/${projectId}/backlog`)
+    const res = await api.get(`api/projects/${projectId}`)
   }
 }
 export const projectService = new ProjectService()

@@ -17,12 +17,12 @@ const routes = [
     component: loadPage('ProjectsPage'),
     children: [
       {
-        path: 'backlog',
+        path: 'backlogs',
         name: 'Projects.Backlog',
         component: loadPage('ProjectsBacklogPage')
       },
       {
-        path: 'sprint',
+        path: 'sprints',
         name: 'Projects.Sprint',
         component: loadPage('ProjectsSprintPage')
       }
