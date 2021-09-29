@@ -1,13 +1,13 @@
 <template>
   <div class="mx-2">
-    <div class="row my-3 py-3 rounded shadow-sm selectable" @click="goToProjectPage(project.id)">
+    <div class="row my-3 py-3 rounded shadow-sm selectable hov" @click="goToProjectPage(project.id)">
       <div class="col-4 d-flex align-items-center">
         <h6 class="ps-1">
           {{ project.name }}
         </h6>
       </div>
       <div class="col-4 d-flex justify-content-center">
-        <img :src="account.picture" alt="" class="shadow-sm creatorpic">
+        <img :src="account.picture" alt="" class="creatorpic">
       </div>
       <div class="col-4 d-flex align-items-center justify-content-end">
         <h6 class="pe-1">
@@ -57,6 +57,10 @@ export default {
   height: 3rem;
   width: 3rem;
   border: 2px solid #CF40AE;
+}
+
+.hov:hover{
+background-color: #faa4e6c2;
 }
 
 </style>
