@@ -10,7 +10,7 @@ class ProjectService {
   }
 
   async goToProjectPage(projectId) {
-    const res = await api.get(`api/projects/${projectId}`)
+    const res = await api.get(`api/projects/${projectId}/backlog`)
     logger.log('go to project page', res)
   }
 

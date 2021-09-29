@@ -50,7 +50,7 @@ export default {
       async goToProjectPage(projectId) {
         try {
           await projectService.goToProjectPage(projectId)
-          router.push({ name: 'Projects', params: { projectId: projectId } })
+          router.push({ name: 'Projects.Backlog', params: { projectId: projectId } })
         } catch (error) {
           Pop.toast(error)
         }

@@ -32,8 +32,8 @@
           </h5>
         </div>
       </div>
-      <div class="col">
-        <Backlog :backlogs="b" v-for="b in backlogs" :key="b.id" />
+      <div class="col-12">
+        <Backlog :backlog="b" v-for="b in backlogs" :key="b.id" />
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@ export default {
     const route = useRoute()
     onMounted(async() => {
       try {
-        await backlogsService.getBacklog(route.params.projectId)
+        await backlogsService.getBacklogs(route.params.projectId)
       } catch (error) {
         Pop.toast(error.message, 'error')
       }
