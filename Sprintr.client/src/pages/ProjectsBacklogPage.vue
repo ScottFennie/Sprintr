@@ -6,8 +6,8 @@
         <p> your lists of backlogs </p>
       </div>
       <div class="col-md-6 d-flex align-items-center justify-content-end">
-        <Button class="button height gradient-button gradient-button-1">
-          <i class="mdi mdi-plus f-20"></i>
+        <Button class="button height gradient-button gradient-button-1" data-bs-toggle="modal" data-bs-target="#backlog-modal" title="Create a Backlog">
+          <i class="mdi mdi-plus f-16"></i>
         </Button>
       </div>
     </div>
@@ -21,7 +21,7 @@
         </div>
         <div>
           <h5>
-            members
+            Weight
           </h5>
         </div>
         <div>
@@ -35,6 +35,15 @@
       </div>
     </div>
   </div>
+
+  <Modal id="backlog-modal">
+    <template #modal-title>
+      <h3>Backlog</h3>
+    </template>
+    <template #modal-body>
+      <BacklogForm />
+    </template>
+  </Modal>
 </template>
 
 <script>
@@ -50,7 +59,6 @@ export default {
       try {
         await backlogsService.getBacklog(route.params.projectId)
       } catch (error) {
-        debugger
         Pop.toast(error.message, 'error')
       }
     })
