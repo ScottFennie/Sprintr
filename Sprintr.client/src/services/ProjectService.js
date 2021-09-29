@@ -19,5 +19,11 @@ class ProjectService {
     logger.log('heres the new project', res)
     AppState.projects.unshift(res.data)
   }
+
+  async removeProject(proId) {
+    const res = await api.delete('api/projects/' + proId)
+    logger.log('delete project', res)
+    AppState.projects = AppState.projects.filter(p => p.id !== proId)
+  }
 }
 export const projectService = new ProjectService()
