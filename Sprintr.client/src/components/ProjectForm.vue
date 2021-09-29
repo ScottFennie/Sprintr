@@ -5,7 +5,7 @@
     <div class="card-body">
       <form @submit.prevent="createProject()">
         <div class="form-group">
-          <label for="name">What's on our mind?</label>
+          <label for="name">Project Name</label>
           <input type="text"
                  class="form-control bg-light"
                  name="name"
@@ -15,7 +15,7 @@
           >
         </div>
         <div class="form-group">
-          <label for="title">Img Url</label>
+          <label for="title">Project Description</label>
           <input type="text"
                  class="form-control bg-light"
                  name="description"
@@ -42,16 +42,16 @@ export default {
   setup() {
     const editable = ref({})
     return {
-      editable
-    //   async createProject() {
-    //     try {
-    //       await projectService.createProject(editable.value)
-    //       editable.value = ({})
-    //       Pop.toast('very Nice', 'success')
-    //     } catch (error) {
-    //       Pop.toast(error.message, 'error')
-    //     }
-    //   }
+      editable,
+      async createProject() {
+        try {
+          await projectService.createProject(editable.value)
+          editable.value = ({})
+          Pop.toast('very Nice', 'success')
+        } catch (error) {
+          Pop.toast(error.message, 'error')
+        }
+      }
     }
   }
 }
