@@ -13,6 +13,9 @@
         <h6 class="pe-1">
           {{ new Date(project.createdAt).toDateString() }}
         </h6>
+        <div class="on-hover position-absolute" style="right: 1rem; top: 1rem" v-if="account.id == project.creatorId">
+          <i class="mdi mdi-close text-danger f-16 selectable" @click="removeProject()" title="Remove Project"></i>
+        </div>
       </div>
     </div>
   </div>
