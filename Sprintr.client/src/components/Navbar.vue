@@ -1,14 +1,14 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-white px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center ps-4">
         <img
           alt="logo"
           src="../assets/img/icons8-space-shuttle-96.png"
           height="50"
         />
         <h3 class="titletext ms-2 text-primary">
-          WarpSpeed
+          Warp-Speed
         </h3>
       </div>
     </router-link>
