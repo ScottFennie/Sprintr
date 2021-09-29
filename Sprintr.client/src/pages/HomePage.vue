@@ -9,7 +9,7 @@
         <p>Here are where all your Projects will go.</p>
       </div>
       <div class="col-md-6 d-flex align-items-center justify-content-end">
-        <button class="button hieght gradient-button gradient-button-1">
+        <button class="button hieght gradient-button gradient-button-1" data-bs-target="#project-modal" data-bs-toggle="modal">
           Create Project
         </button>
       </div>
@@ -35,16 +35,28 @@
         <Project :project="p" v-for="p in projects" :key="p.id" />
       </div>
     </div>
+    <Modal id="project-modal">
+      <template #modal-title>
+        Add A Project
+      </template>
+      <template #modal-body>
+        <ProjectForm />
+      </template>
+      <Modal />
+    </modal>
   </div>
 </template>
 
 <script>
-import { computed, onMounted } from '@vue/runtime-core'
+import { computed, onMounted, ref } from '@vue/runtime-core'
 import Pop from '../utils/Pop'
 import { AppState } from '../AppState'
 import { projectService } from '../services/ProjectService'
+import Modal from '../components/Modal.vue'
 export default {
+  components: { Modal },
   setup() {
+    const editable = ref({})
     onMounted(async() => {
       try {
         await projectService.getProjects()
@@ -53,7 +65,17 @@ export default {
       }
     })
     return {
-      projects: computed(() => AppState.projects)
+      editable,
+      projects: computed(() => AppState.projects),
+      async createProject() {
+        try {
+          await projectService.createProject(editable.value)
+          editable.value = ({})
+          Pop.toast('very Nice', 'success')
+        } catch (error) {
+          Pop.toast(error.message, 'error')
+        }
+      }
     }
   }
 }

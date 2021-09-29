@@ -13,5 +13,11 @@ class ProjectService {
     const res = await api.get(`api/projects/${projectId}`)
     logger.log('go to project page', res)
   }
+
+  async createProject(newProject) {
+    const res = await api.post('api/projects', newProject)
+    logger.log('heres the new project', res)
+    AppState.projects.unshift(res.data)
+  }
 }
 export const projectService = new ProjectService()
