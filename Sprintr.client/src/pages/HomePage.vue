@@ -5,11 +5,13 @@
   <div class="container">
     <div class="row pt-5">
       <div class="col-md-6">
-        <h2>Projects</h2>
+        <h2 class="t-color">
+          Projects
+        </h2>
         <p>Here are where all your Projects will go.</p>
       </div>
       <div class="col-md-6 d-flex align-items-center justify-content-end">
-        <button class="button hieght gradient-button gradient-button-1" data-bs-target="#project-modal" data-bs-toggle="modal">
+        <button class=" btn button-height gradient-button gradient-button-1" data-bs-target="#project-modal" data-bs-toggle="modal">
           Create Project
         </button>
       </div>
@@ -105,6 +107,6 @@ color: white;
     border-radius: 25px;
 }
 
-.gradient-button-1 {background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%)}
+.gradient-button-1 {background-image: linear-gradient(to right, #121fcfad 0%,#CF40AE 51%, #121fcfad )}
 .gradient-button-1:hover { background-position: right center; }
 </style>
