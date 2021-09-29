@@ -4,8 +4,8 @@ const Schema = Mongoose.Schema
 export const BacklogItemSchema = new Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
-  status: { type: String, required: true, Enum: ['pending', 'in-progress', 'review', 'done'] },
-  sprintId: { type: Schema.Types.ObjectId, required: true, ref: 'Sprint' },
+  status: { type: String, Enum: ['pending', 'in-progress', 'review', 'done'] },
+  sprintId: { type: Schema.Types.ObjectId, ref: 'Sprint' },
   projectId: { type: Schema.Types.ObjectId, required: true, ref: 'Project' },
   creatorId: { type: Schema.Types.ObjectId, required: true, ref: 'Account' }
 }, { timestamps: true, toJSON: { virtuals: true } })

@@ -8,6 +8,12 @@ class BacklogsService {
     logger.log('backlog', res)
     AppState.backlog = res.data
   }
+
+  async createBacklog(backlogData, projectId) {
+    const res = await api.post(`api/projects/${projectId}/backlog`, backlogData)
+    logger.log('create bcaklog', res)
+    AppState.backlogs.unshift(res.data)
+  }
 }
 
 export const backlogsService = new BacklogsService()
