@@ -2,11 +2,13 @@
   <div class=" container backlog">
     <div class="row pt-5">
       <div class="col-md-6">
-        <h2>Backlog</h2>
+        <h2 class="t-color">
+          Backlog
+        </h2>
         <p> your lists of backlogs </p>
       </div>
       <div class="col-md-6 d-flex align-items-center justify-content-end">
-        <Button class="button height gradient-button gradient-button-1" data-bs-toggle="modal" data-bs-target="#backlog-modal" title="Create a Backlog">
+        <Button class="p-1 px-3 btn gradient-button gradient-button-1" data-bs-toggle="modal" data-bs-target="#backlog-modal" title="Create a Backlog">
           <i class="mdi mdi-plus f-16"></i>
         </Button>
       </div>
@@ -90,6 +92,6 @@ color: white;
     display: inline-block;
     border-radius: 25px;
 }
-.gradient-button-1 {background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%)}
+.gradient-button-1 {background-image: linear-gradient(to right, #121fcfad 0%,#CF40AE 51%, #121fcfad )}
 .gradient-button-1:hover { background-position: right center; }
 </style>
