@@ -27,6 +27,11 @@
             Backlog
           </router-link>
         </li>
+        <li>
+          <router-link :to="{ name: 'Sprint' }" class="btn text-dark selectable text-uppercase">
+            Sprint
+          </router-link>
+        </li>
       </ul>
       <span class="navbar-text">
         <button

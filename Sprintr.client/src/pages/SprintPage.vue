@@ -1,8 +1,8 @@
 <template>
-  <div class=" container-fluid backlog">
+  <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <h1>This is the backlog page</h1>
+        this is the sprint
       </div>
     </div>
   </div>
@@ -10,6 +10,12 @@
 
 <script>
 export default {
-  name: 'AboutPage'
+  setup() {
+    return {}
+  }
 }
 </script>
+
+<style lang="scss" scoped>
+
+</style>

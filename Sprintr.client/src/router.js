@@ -12,6 +12,11 @@ const routes = [
     component: loadPage('HomePage')
   },
   {
+    path: '/sprint',
+    name: 'Sprint',
+    component: loadPage('SprintPage')
+  },
+  {
     path: '/backlog',
     name: 'Backlog',
     component: loadPage('BacklogPage')
