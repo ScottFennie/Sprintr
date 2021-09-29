@@ -8,8 +8,8 @@
         <h2>Projects</h2>
         <p>Here are where all your Projects will go.</p>
       </div>
-      <div class="col-6 d-flex justify-content-end">
-        <button class="btn btn-light">
+      <div class="col-6 d-flex align-items-center justify-content-end">
+        <button class="button hieght gradient-button gradient-button-1">
           Create Project
         </button>
       </div>
@@ -61,4 +61,28 @@ export default {
 
 <style scoped lang="scss">
 
+.button-height{
+height: 3rem;
+background-color: pink;
+color: white;
+}
+
+.gradient-button {
+    margin: 10px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 12px;
+    padding: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #FFF;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 25px;
+}
+
+.gradient-button-1 {background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%)}
+.gradient-button-1:hover { background-position: right center; }
 </style>
