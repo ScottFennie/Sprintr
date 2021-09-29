@@ -8,18 +8,25 @@ function loadPage(page) {
 const routes = [
   {
     path: '/',
+    name: 'Home',
+    component: loadPage('HomePage')
+  },
+  {
+    path: '/projects/:projectsId',
     name: 'Projects',
-    component: loadPage('ProjectsPage')
-  },
-  {
-    path: '/sprint',
-    name: 'Sprint',
-    component: loadPage('SprintPage')
-  },
-  {
-    path: '/backlog',
-    name: 'Backlog',
-    component: loadPage('BacklogPage')
+    component: loadPage('ProjectsPage'),
+    children: [
+      {
+        path: 'backlog',
+        name: 'Projects.Backlog',
+        component: loadPage('ProjectsBacklogPage')
+      },
+      {
+        path: 'sprint',
+        name: 'Projects.Sprint',
+        component: loadPage('ProjectsSprintPage')
+      }
+    ]
   },
   {
     path: '/account',

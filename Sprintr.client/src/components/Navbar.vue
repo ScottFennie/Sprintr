@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-white shadow-sm px-3">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Projects' }">
+    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img
           alt="logo"

@@ -1,20 +1,22 @@
 <template>
   <div class="mx-2">
-    <div class="row my-3 py-3 rounded shadow-sm">
-      <div class="col-4 d-flex align-items-center">
-        <h6 class="ps-1">
-          {{ project.name }}
-        </h6>
+    <router-link :to="{name: 'Project', params: { projectId: project.id }}">
+      <div class="row my-3 py-3 rounded shadow-sm">
+        <div class="col-4 d-flex align-items-center">
+          <h6 class="ps-1">
+            {{ project.name }}
+          </h6>
+        </div>
+        <div class="col-4 d-flex justify-content-center">
+          <img :src="account.picture" alt="" class="creatorpic">
+        </div>
+        <div class="col-4 d-flex align-items-center justify-content-end">
+          <h6 class="pe-1">
+            {{ new Date(project.createdAt).toDateString() }}
+          </h6>
+        </div>
       </div>
-      <div class="col-4 d-flex justify-content-center">
-        <img :src="account.picture" alt="" class="creatorpic">
-      </div>
-      <div class="col-4 d-flex align-items-center justify-content-end">
-        <h6 class="pe-1">
-          {{ new Date(project.createdAt).toDateString() }}
-        </h6>
-      </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
