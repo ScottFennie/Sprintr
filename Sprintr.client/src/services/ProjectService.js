@@ -8,5 +8,9 @@ class ProjectService {
     AppState.projects = res.data
     logger.log('this is the appstate', res)
   }
+
+  async goToProjectPage(projectId) {
+    const res = await api.get(`api/projects/${projectId}/backlog`)
+  }
 }
 export const projectService = new ProjectService()

@@ -23,14 +23,14 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'Projects.Backlog' }" class="btn text-dark selectable text-uppercase">
+          <!-- <router-link :to="{ name: 'Projects.Backlog' }" class="btn text-dark selectable text-uppercase">
             Backlog
-          </router-link>
+          </router-link> -->
         </li>
         <li>
-          <router-link :to="{ name: 'Projects.Sprint' }" class="btn text-dark selectable text-uppercase">
+          <!-- <router-link :to="{ name: 'Projects.Sprint' }" class="btn text-dark selectable text-uppercase">
             Sprint
-          </router-link>
+          </router-link> -->
         </li>
       </ul>
       <span class="navbar-text">
