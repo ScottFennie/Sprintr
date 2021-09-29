@@ -1,12 +1,15 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-white shadow-sm px-3">
+  <nav class="navbar navbar-expand-lg bg-white px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
+      <div class="d-flex align-items-center">
         <img
           alt="logo"
           src="../assets/img/icons8-space-shuttle-96.png"
           height="50"
         />
+        <h3 class="titletext ms-2 text-primary">
+          WarpSpeed
+        </h3>
       </div>
     </router-link>
     <button
@@ -122,5 +125,14 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+.titletext{
+font-family: 'Pacifico', cursive;
+background: #121FCF;
+background: -webkit-linear-gradient(to right, #121FCF 21%, #CF40AE 100%);
+background: -moz-linear-gradient(to right, #121FCF 21%, #CF40AE 100%);
+background: linear-gradient(to right, #121FCF 21%, #CF40AE 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
 }
 </style>
