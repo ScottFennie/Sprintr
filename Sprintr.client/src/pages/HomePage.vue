@@ -11,7 +11,7 @@
         <p>Here are where all your Projects will go.</p>
       </div>
       <div class="col-md-6 d-flex align-items-center justify-content-end">
-        <button class=" btn button-height gradient-button gradient-button-1" data-bs-target="#project-modal" data-bs-toggle="modal">
+        <button class=" btn shadow-sm button-height gradient-button gradient-button-1" data-bs-target="#project-modal" data-bs-toggle="modal">
           Create Project
         </button>
       </div>
@@ -38,7 +38,7 @@
       </div>
     </div>
     <Modal id="project-modal">
-      <template #modal-title>
+      <template #modal-title class="t-color">
         Add A Project
       </template>
       <template #modal-body>

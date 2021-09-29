@@ -3,7 +3,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">
+          <h5 class="modal-title t-color" id="exampleModalLabel">
             <slot name="modal-title"></slot>
           </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -26,5 +26,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.t-color{
+  color: #CF40AE;
+}
 </style>

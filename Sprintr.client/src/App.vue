@@ -1,7 +1,7 @@
 <template>
   <header>
   </header>
-  <main>
+  <main class="bg-white">
     <router-view />
   </main>
   <footer>
