@@ -11,6 +11,7 @@ class ProjectService {
 
   async goToProjectPage(projectId) {
     const res = await api.get(`api/projects/${projectId}`)
+    logger.log('go to project page', res)
   }
 }
 export const projectService = new ProjectService()
