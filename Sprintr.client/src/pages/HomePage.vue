@@ -4,11 +4,11 @@
   </header>
   <div class="container">
     <div class="row pt-5">
-      <div class="col-6">
+      <div class="col-md-6">
         <h2>Projects</h2>
         <p>Here are where all your Projects will go.</p>
       </div>
-      <div class="col-6 d-flex align-items-center justify-content-end">
+      <div class="col-md-6 d-flex align-items-center justify-content-end">
         <button class="button hieght gradient-button gradient-button-1">
           Create Project
         </button>

@@ -1,6 +1,6 @@
 <template>
   <div class="mx-2">
-    <div class="row my-3 py-3 rounded shadow-sm" @click="goToProjectPage(project.id)">
+    <div class="row my-3 py-3 rounded shadow-sm selectable" @click="goToProjectPage(project.id)">
       <div class="col-4 d-flex align-items-center">
         <h6 class="ps-1">
           {{ project.name }}
@@ -37,7 +37,7 @@ export default {
       async goToProjectPage(projectId) {
         try {
           await projectService.goToProjectPage(projectId)
-          router.push({ name: 'Projects.Backlog', params: { projectId: projectId } })
+          router.push({ name: 'Projects', params: { projectId: projectId } })
         } catch (error) {
           Pop.toast(error)
         }
