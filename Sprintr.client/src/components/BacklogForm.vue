@@ -5,39 +5,43 @@
         <input type="radio"
                class="btn-check"
                name="btnradio"
-               id="btnradio1"
+               id="btnradio4"
+               value="pending"
                autocomplete="off"
-               @click="editable.status = 'pending'"
+               v-model="editable.status"
                checked
         >
-        <label class="btn btn-outline-primary" for="btnradio1">Pending</label>
-
-        <input type="radio"
-               class="btn-check"
-               name="btnradio"
-               id="btnradio2"
-               autocomplete="off"
-               @click="editable.status = 'in-progress'"
-        >
-        <label class="btn btn-outline-primary" for="btnradio2">In-progress</label>
+        <label class="btn btn-outline-primary" for="btnradio4">Pending</label>
 
         <input type="radio"
                class="btn-check"
                name="btnradio"
                id="btnradio3"
+               value="in-progress"
                autocomplete="off"
-               @click="editable.status = 'review'"
+               v-model="editable.status"
         >
-        <label class="btn btn-outline-primary" for="btnradio3">Review</label>
+        <label class="btn btn-outline-primary" for="btnradio3">In-progress</label>
 
         <input type="radio"
                class="btn-check"
                name="btnradio"
-               id="btnradio4"
+               id="btnradio1"
+               value="review"
                autocomplete="off"
-               @click="editable.status = 'done'"
+               v-model="editable.status"
         >
-        <label class="btn btn-outline-primary" for="btnradio4">Done</label>
+        <label class="btn btn-outline-primary" for="btnradio1">Review</label>
+
+        <input type="radio"
+               class="btn-check"
+               name="btnradio"
+               id="btnradio2"
+               value="done"
+               autocomplete="off"
+               v-model="editable.status"
+        >
+        <label class="btn btn-outline-primary" for="btnradio2">Done</label>
       </div>
       <label for="name" class="sr-only"></label>
       <input type="text"
