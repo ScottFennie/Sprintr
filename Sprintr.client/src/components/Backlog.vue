@@ -25,7 +25,7 @@
                     </div>
                     <div class="py-2 col-2 d-flex justify-content-between">
                       <div class="morinfo">
-                        <button class="px-3 py-0 btn button-color text-white" :data-bs-target="'#project-modal-' + backlog.id" data-bs-toggle="modal">
+                        <button class="px-3 py-0 btn button-color text-white" :data-bs-target="'#project-modal-' + backlog.id" data-bs-toggle="modal" @click="getCurrentBacklog(backlog.id)">
                           Info
                         </button>
                       </div>
@@ -60,6 +60,8 @@
 <script>
 import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
+import Pop from '../utils/Pop'
+import { backlogsService } from '../services/BacklogsService'
 export default {
   props: {
     backlog: {
@@ -69,7 +71,15 @@ export default {
   },
   setup(props) {
     return {
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+
+      async getCurrentBacklog() {
+        try {
+          await backlogsService.getCurrentBacklog(props.backlog.id)
+        } catch (error) {
+          Pop.toast(error)
+        }
+      }
     }
   }
 
