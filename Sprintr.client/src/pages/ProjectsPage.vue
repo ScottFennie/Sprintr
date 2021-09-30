@@ -9,6 +9,9 @@
           <h1 class="text-center">
             Project
           </h1>
+          <div class="col-md-1 on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == project?.creatorId">
+            <i class="mdi mdi-close text-danger f-20 selectable" @click="removeProject()" title="Remove Project"></i>
+          </div>
           <div class="backlogs">
             <div class="text-center t-color">
               <router-link :to="{name:'Projects.Backlog'}" class="t-color">
@@ -36,7 +39,33 @@
 </template>
 
 <script>
+import { computed, onMounted } from '@vue/runtime-core'
+import { AppState } from '../AppState'
+import Pop from '../utils/Pop'
+import { projectService } from '../services/ProjectService'
+import { useRoute } from 'vue-router'
 export default {
+  setup() {
+    const route = useRoute()
+    onMounted(async() => {
+      await projectService.getCurrentProjectById(route.params.projectId)
+    })
+    return {
+      account: computed(() => AppState.account),
+      project: computed(() => AppState.project),
+      async removeProject() {
+        try {
+          const yes = await Pop.confirm('are you sure <b>you</b> want to remove this <em>Project</em>?')
+          if (!yes) { return }
+          await projectService.removeProject(route.params.projectId)
+          Pop.toast('Project has been removed', 'success')
+        } catch (error) {
+          Pop.toast(error.message, 'error')
+        }
+      }
+
+    }
+  }
 }
 </script>
 
