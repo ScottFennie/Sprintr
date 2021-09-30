@@ -23,6 +23,11 @@ const routes = [
       },
       {
         path: 'sprints',
+        name: 'Projects.Sprints',
+        component: loadPage('ProjectsSprintsPage')
+      },
+      {
+        path: 'sprint/:sprintId',
         name: 'Projects.Sprint',
         component: loadPage('ProjectsSprintPage')
       }

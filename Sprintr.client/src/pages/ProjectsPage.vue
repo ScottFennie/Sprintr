@@ -18,7 +18,7 @@
               </router-link>
             </div>
             <div class="text-center">
-              <router-link :to="{name:'Projects.Sprint'}" class="text-success lighten-30">
+              <router-link :to="{name:'Projects.Sprints'}" class="text-success lighten-30">
                 <h5 class="nav-link t-color">
                   Sprints
                 </h5>
