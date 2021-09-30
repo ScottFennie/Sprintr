@@ -22,7 +22,7 @@
         </div>
         <div>
           <h5>
-            Weight
+            Time Frame
           </h5>
         </div>
         <div>
@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="col">
-        <Spring :sprint="s" v-for="s in sprints" :key="s.id" />
+        <Sprint :sprint="s" v-for="s in sprints" :key="s.id" />
       </div>
     </div>
   </div>
