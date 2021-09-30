@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="row card">
+    <div class="row">
       <div class="col-12 text-center">
         <h3>{{ currentBacklog.name }}</h3>
       </div>
@@ -9,35 +9,25 @@
       </div>
       <div class="center d-flex">
         <div class="col-6">
-          <h5 class="mb-2">
-            Tasks
-          </h5>
         </div>
         <div class="col-6 d-flex justify-content-end">
-          <button class="p-1 px-3 btn gradient-button gradient-button-1" title="Create a Task">
-            <i class="mdi mdi-plus f-16"></i>
-          </button>
         </div>
       </div>
       <div class="col-12">
-        <div class="div card shadow">
+        <div class="div">
+          <TaskForm />
           <Task :task="t" v-for="t in tasks" :key="t.id" />
         </div>
       </div>
       <div class="center d-flex">
         <div class="col-6">
-          <h5 class="mb-2">
-            Notes
-          </h5>
         </div>
         <div class="col-6 d-flex justify-content-end">
-          <button class="p-1 px-3 btn gradient-button gradient-button-1" title="Create a Note">
-            <i class="mdi mdi-plus f-16"></i>
-          </button>
         </div>
       </div>
       <div class="col-12">
-        <div class="div card shadow">
+        <div class="div">
+          <NoteForm />
           <Note :note="n" v-for="n in notes" :key="n.id" />
         </div>
       </div>
