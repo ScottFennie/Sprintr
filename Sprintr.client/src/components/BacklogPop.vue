@@ -14,8 +14,8 @@
           </h5>
         </div>
         <div class="col-6 d-flex justify-content-end">
-          <button class="btn btn-primary">
-            + Task
+          <button class="p-1 px-3 btn gradient-button gradient-button-1" title="Create a Task">
+            <i class="mdi mdi-plus f-16"></i>
           </button>
         </div>
       </div>
@@ -31,8 +31,8 @@
           </h5>
         </div>
         <div class="col-6 d-flex justify-content-end">
-          <button class="btn btn-primary">
-            + Note
+          <button class="p-1 px-3 btn gradient-button gradient-button-1" title="Create a Note">
+            <i class="mdi mdi-plus f-16"></i>
           </button>
         </div>
       </div>
@@ -59,6 +59,27 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped lang="scss">
+.button-height{
+height: 3rem;
+background-color: pink;
+color: white;
+}
+.gradient-button {
+    margin: 10px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 12px;
+    padding: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #FFF;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 25px;
+}
+.gradient-button-1 {background-image: linear-gradient(to right, #121fcfad 0%,#CF40AE 51%, #121fcfad )}
+.gradient-button-1:hover { background-position: right center; }
 </style>
