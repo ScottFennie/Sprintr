@@ -29,8 +29,8 @@
                           Info
                         </button>
                       </div>
-                      <div class="icon">
-                        <i class="mdi mdi-close text-danger f-20 selectable" title="Remove"></i>
+                      <div class="icon on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == sprint.creatorId">
+                        <i class="mdi mdi-close text-danger f-20 selectable" @click="removeSprint()" title="Remove Sprint"></i>
                       </div>
                     </div>
                   </div>
@@ -61,6 +61,9 @@
 import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { Sprint } from '../models/Sprint'
+import { useRoute } from 'vue-router'
+import Pop from '../utils/Pop'
+import { sprintsService } from '../services/SprintsService'
 export default {
   props: {
     sprint: {
@@ -69,8 +72,19 @@ export default {
     }
   },
   setup(props) {
+    const route = useRoute()
     return {
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      async removeSprint() {
+        try {
+          const yes = await Pop.confirm('are you sure <b>you</b> want to remove this <em>Sprint</em>?')
+          if (!yes) { return }
+          await sprintsService.removeSprint(props.sprint.id, route.params.projectId)
+          Pop.toast('Sprint has been removed', 'success')
+        } catch (error) {
+          Pop.toast(error.message, 'error')
+        }
+      }
     }
   }
 
