@@ -2,10 +2,10 @@
   <div class="container-fluid">
     <div class="row card">
       <div class="col-12 text-center">
-        <h3>Backlog Details</h3>
+        <h3>{{ currentBacklog.name }}</h3>
       </div>
       <div class="col-12 text-center">
-        <p>This is where the conditional completed will go</p>
+        <p>{{ currentBacklog.status }}</p>
       </div>
       <div class="center d-flex">
         <div class="col-6">
@@ -46,7 +46,14 @@
 </template>
 
 <script>
+import { computed } from '@vue/runtime-core'
+import { AppState } from '../AppState'
 export default {
+  setup() {
+    return {
+      currentBacklog: computed(() => AppState.currentBacklog)
+    }
+  }
 
 }
 </script>

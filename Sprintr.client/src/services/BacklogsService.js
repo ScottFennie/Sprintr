@@ -13,11 +13,13 @@ class BacklogsService {
   async createBacklog(backlogData, projectId) {
     const res = await api.post(`api/projects/${projectId}/backlog`, backlogData)
     logger.log('create bcaklog', res)
-    AppState.backlogs = new Backlog(res.data)
+    AppState.backlogs.push(new Backlog(res.data))
   }
 
   async getCurrentBacklog(backlogId) {
+    AppState.currentBacklog = []
     AppState.currentBacklog = AppState.backlogs.find(b => b.id === backlogId)
+    logger.log('appstate current backlog', AppState.currentBacklog)
   }
 
   async removeBacklog(backlogId, projectId) {

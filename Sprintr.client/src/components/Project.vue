@@ -1,15 +1,15 @@
 <template>
   <div class="mx-2">
-    <div class="row my-3 py-3 rounded shadow-sm selectable hov" @click="goToProjectPage(project.id)">
-      <div class="col-md-4 d-flex align-items-center">
+    <div class="row my-3 py-3 rounded shadow-sm hov">
+      <div class="col-md-4 d-flex align-items-center" @click="goToProjectPage(project.id)">
         <h6 class="ps-1">
           {{ project.name }}
         </h6>
       </div>
-      <div class="col-md-4 d-flex justify-content-center">
+      <div class="col-md-4 d-flex justify-content-center" @click="goToProjectPage(project.id)">
         <img :src="account.picture" alt="" class="creatorpic">
       </div>
-      <div class="col-md-3 d-flex align-items-center justify-content-end">
+      <div class="col-md-3 d-flex align-items-center justify-content-end" @click="goToProjectPage(project.id)">
         <h6 class="pe-1">
           {{ new Date(project.createdAt).toDateString() }}
         </h6>
