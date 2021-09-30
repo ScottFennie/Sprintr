@@ -18,10 +18,10 @@
                       <h5>{{ backlog.name }}</h5>
                     </div>
                     <div class="py-2 col-4">
-                      <h5>Weight - 5</h5>
+                      <h5>{{ backlog.totalWeight }}</h5>
                     </div>
                     <div class="py-2 col-2">
-                      <h5>Sprint 2</h5>
+                      <h5>{{ backlog.sprint }}</h5>
                     </div>
                     <div class="py-2 col-2 d-flex justify-content-between">
                       <div class="morinfo">

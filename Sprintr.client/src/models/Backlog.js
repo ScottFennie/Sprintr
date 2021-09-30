@@ -9,5 +9,6 @@ export class Backlog {
     this.creatorId = backlogData.creatorId
     this.creator = backlogData.creator = {}
     this.createdAt = backlogData.createdAt
+    this.totalWeight = backlogData.totalWeight
   }
 }
