@@ -1,4 +1,5 @@
 import { AppState } from '../AppState'
+import { Project } from '../models/Project'
 import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
 
@@ -7,6 +8,12 @@ class ProjectService {
     const res = await api.get('api/projects')
     AppState.projects = res.data
     logger.log('this is the appstate', res)
+  }
+
+  async getCurrentProjectById(projectId) {
+    const res = await api.get(`api/projects/${projectId}`)
+    logger.log('go get project ID', res)
+    AppState.project = new Project(res.data)
   }
 
   async goToProjectPage(projectId) {
