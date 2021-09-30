@@ -37,10 +37,10 @@ export default {
       account: computed(() => AppState.account),
       async removeNote() {
         try {
-          const yes = await Pop.confirm('are you sure <b>you</b> want to remove this <em>Task</em>?')
+          const yes = await Pop.confirm('are you sure <b>you</b> want to remove this <em>Note</em>?')
           if (!yes) { return }
           await backlogsService.removeNote(props.note.id, route.params.projectId)
-          Pop.toast('Task has been removed', 'success')
+          Pop.toast('Note has been removed', 'success')
         } catch (error) {
           Pop.toast(error.message, 'error')
         }
