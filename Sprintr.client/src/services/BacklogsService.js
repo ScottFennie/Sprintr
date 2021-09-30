@@ -13,7 +13,7 @@ class BacklogsService {
   async getCurrentBacklog(projectId) {
     const res = await api.get(`api/projects/${projectId}/backlog`)
     logger.log('backlog', res)
-    AppState.backlogs = res.data
+    AppState.backlogs = res.data.map(b => new Backlog(b))
   }
 
   async createBacklog(backlogData, projectId) {
