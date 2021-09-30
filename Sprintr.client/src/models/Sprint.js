@@ -1,5 +1,6 @@
 export class Sprint {
   constructor(sprintData) {
+    this.id = sprintData.id
     this.name = sprintData.name
     this.startDate = sprintData.startDate
     this.endDate = sprintData.endDate

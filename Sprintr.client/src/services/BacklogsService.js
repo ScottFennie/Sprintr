@@ -19,6 +19,12 @@ class BacklogsService {
   async getCurrentBacklog(backlogId) {
     AppState.currentBacklog = AppState.backlogs.find(b => b.id === backlogId)
   }
+
+  async removeBacklog(backlogId, projectId) {
+    const res = await api.delete(`api/projects/${projectId}/backlog/` + backlogId)
+    logger.log('delete backlog', res)
+    AppState.backlogs = AppState.backlogs.filter(b => b.id !== backlogId)
+  }
 }
 
 export const backlogsService = new BacklogsService()
