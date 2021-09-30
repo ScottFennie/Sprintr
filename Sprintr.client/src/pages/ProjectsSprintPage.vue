@@ -7,7 +7,7 @@
         </h2>
         <p>your lists of Sprints</p>
       </div>
-      <div class="col-md-6 d-flex align-items-center justify-content-center">
+      <div class="col-md-6 d-flex align-items-center justify-content-end">
         <button class="p-1 px-3 btn gradient-button gradient-button-1" data-bs-toggle="modal" data-bs-target="#sprint-modal" title="Create a Sprint">
           <i class="mdi mdi-plus f-16"></i>
         </button>
