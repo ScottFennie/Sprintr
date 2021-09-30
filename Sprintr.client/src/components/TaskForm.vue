@@ -13,7 +13,7 @@
                name="name"
         >
       </div>
-      <div class="col-10">
+      <div class="col-12">
         <div class="input-group mb-3">
           <input type="text"
                  class="form-control bg-white"
@@ -23,9 +23,11 @@
                  aria-describedby="button-addon2"
                  v-model="editable.weight"
           >
-          <button class="btn button-color text-white" type="submit" id="button-addon2">
-            Add Task
-          </button>
+          <div class="col-md-2">
+            <button type="submit" class="p-1 px-3 btn gradient-button gradient-button-1" title="Create a Task">
+              <i class="mdi mdi-plus f-16" title="Add Task" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
