@@ -1,18 +1,20 @@
 <template>
-  <div class="row card">
-    <div class="col-12">
-      <div class="imagename">
-        <img :src="note.creator.picture" alt="">
+  <div class="container-fluid p-0 m-0">
+    <div class="row card p-0 m-0">
+      <div class="col-6 d-flex align-items-center m-0">
+        <div class="imagename">
+          <img :src="note.creator.picture" class="size rounded-circle py-2" alt="">
+        </div>
+        <div class="px-3">
+          <h5>{{ note.creator.name }}</h5>
+        </div>
       </div>
-      <div class="">
-        <h5>{{ note.creator.name }}</h5>
+      <div class="col-6 d-flex align-items-center pt-4 m-0">
+        <p>{{ note.body }}</p>
       </div>
-    </div>
-    <div class="col-12">
-      <p>{{ note.body }}</p>
-    </div>
-    <div class="icon on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == note.creatorId">
-      <i class="mdi mdi-close text-danger f-20 selectable" @click="removeNote()" title="Remove Note"></i>
+      <div class="icon on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == note.creatorId">
+        <i class="mdi mdi-close text-danger f-20 selectable" @click="removeNote()" title="Remove Note"></i>
+      </div>
     </div>
   </div>
 </template>
@@ -53,5 +55,8 @@ export default {
 </script>
 
 <style>
-
+.size{
+  max-height: 64px;
+  max-width: 64px;
+}
 </style>
