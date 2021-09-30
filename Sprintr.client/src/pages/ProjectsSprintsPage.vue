@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="col">
-        <Sprint :sprint="s" v-for="s in sprints" :key="s.id" />
+        <Sprints :sprint="s" v-for="s in sprints" :key="s.id" />
       </div>
     </div>
   </div>
