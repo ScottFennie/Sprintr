@@ -25,7 +25,7 @@
                     </div>
                     <div class="py-2 col-2 d-flex justify-content-between">
                       <div class="morinfo">
-                        <button class="px-3 py-0 btn button-color text-white" :data-bs-target="'#project-modal-' + sprint.id" data-bs-toggle="modal">
+                        <button class="px-3 py-0 btn button-color text-white" :data-bs-target="'#sprint-modal-' + sprint.id" data-bs-toggle="modal">
                           Info
                         </button>
                       </div>
@@ -47,7 +47,7 @@
       </div>
     </div>
   </div>
-  <Modal :id="'project-modal-' + sprint.id">
+  <Modal :id="'sprint-modal-' + sprint.id">
     <template #modal-title>
       {{ sprint.name }}
     </template>
