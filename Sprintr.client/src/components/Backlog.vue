@@ -12,15 +12,27 @@
                    aria-expanded="false"
                    aria-controls="flush-collapseOne"
               >
-                <div class="items  d-flex justify-content-between">
-                  <div class="py-2 ms-3">
-                    <h5>{{ backlog.name }}</h5>
-                  </div>
-                  <div class="py-2 ms-3">
-                    <h5>Weight - 5</h5>
-                  </div>
-                  <div class="py-2 ms-3">
-                    <h5>Sprint 2</h5>
+                <div class="itemscontainer-fluid">
+                  <div class="row">
+                    <div class="py-2 col-4">
+                      <h5>{{ backlog.name }}</h5>
+                    </div>
+                    <div class="py-2 col-4">
+                      <h5>Weight - 5</h5>
+                    </div>
+                    <div class="py-2 col-2">
+                      <h5>Sprint 2</h5>
+                    </div>
+                    <div class="py-2 col-2 d-flex justify-content-between">
+                      <div class="morinfo">
+                        <button class="px-3 py-0 btn button-color text-white" :data-bs-target="'#project-modal-' + backlog.id" data-bs-toggle="modal">
+                          Info
+                        </button>
+                      </div>
+                      <div class="icon">
+                        <i class="mdi mdi-close text-danger f-20 selectable" title="Remove"></i>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -35,6 +47,14 @@
       </div>
     </div>
   </div>
+  <Modal :id="'project-modal-' + backlog.id">
+    <template #modal-title>
+      {{ backlog.name }}
+    </template>
+    <template #modal-body>
+      <BacklogPop />
+    </template>
+  </Modal>
 </template>
 
 <script>
@@ -77,6 +97,11 @@ background-color: #faa4e6c2;
 
 .p-border{
 border: 1px solid #cf40ae48;
+}
+.gradient-button-1 {background-image: linear-gradient(to right, #121fcfad 0%,#CF40AE 51%, #121fcfad )}
+.gradient-button-1:hover { background-position: right center; }
+.button-color{
+  background-color: #CF40AE;
 }
 
 </style>

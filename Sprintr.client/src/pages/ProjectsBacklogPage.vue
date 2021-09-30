@@ -94,4 +94,5 @@ color: white;
 }
 .gradient-button-1 {background-image: linear-gradient(to right, #121fcfad 0%,#CF40AE 51%, #121fcfad )}
 .gradient-button-1:hover { background-position: right center; }
+
 </style>
