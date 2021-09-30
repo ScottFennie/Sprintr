@@ -22,7 +22,7 @@ class TaskService {
     }
     task.name = itemData.name || task.name
     task.weight = itemData.weight || task.weight
-    task.isComplete = itemData.isComplete || task.isComplete
+    task.isComplete = itemData.isComplete
     await task.save()
     return task
   }

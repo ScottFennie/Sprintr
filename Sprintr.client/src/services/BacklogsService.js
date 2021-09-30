@@ -75,6 +75,11 @@ class BacklogsService {
     AppState.notes = AppState.notes.filter(n => n.id !== noteId)
     AppState.currentNotes = AppState.notes.filter(n => n.id !== noteId)
   }
+
+  async checkBox(checkId, projectId, checkData) {
+    const res = await api.put(`api/projects/${projectId}/tasks/` + checkId, checkData)
+    logger.log('chek box res', res)
+  }
 }
 
 export const backlogsService = new BacklogsService()

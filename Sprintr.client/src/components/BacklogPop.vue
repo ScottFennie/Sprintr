@@ -25,7 +25,7 @@
         <div class="col-6 d-flex justify-content-end">
         </div>
       </div>
-      <div class="col-12">
+      <div class="col-12mt-3">
         <div class="div">
           <NoteForm />
           <Note :note="n" v-for="n in notes" :key="n.id" />
