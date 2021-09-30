@@ -29,8 +29,8 @@
                           Info
                         </button>
                       </div>
-                      <div class="icon">
-                        <i class="mdi mdi-close text-danger f-20 selectable" title="Remove"></i>
+                      <div class="icon on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == backlog.creatorId">
+                        <i class="mdi mdi-close text-danger f-20 selectable" @click="removeBacklog()" title="Remove Backlog"></i>
                       </div>
                     </div>
                   </div>
@@ -60,16 +60,32 @@
 <script>
 import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
+import { Backlog } from '../models/Backlog'
+import Pop from '../utils/Pop'
+import { backlogsService } from '../services/BacklogsService'
+import { useRoute } from 'vue-router'
 export default {
   props: {
     backlog: {
-      type: Object,
+      type: Backlog,
       required: true
     }
   },
   setup(props) {
+    const route = useRoute()
     return {
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      async removeBacklog() {
+        try {
+          const yes = await Pop.confirm('are you sure <b>you</b> want to remove this <em>Backlog</em>?')
+          if (!yes) { return }
+          await backlogsService.removeBacklog(props.backlog.id, route.params.projectId)
+          Pop.toast('Backlog has been removed', 'success')
+        } catch (error) {
+          Pop.toast(error.message, 'error')
+        }
+      }
+
     }
   }
 

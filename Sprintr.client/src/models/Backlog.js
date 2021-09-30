@@ -1,5 +1,6 @@
 export class Backlog {
   constructor(backlogData) {
+    this.id = backlogData.id
     this.name = backlogData.name
     this.description = backlogData.description
     this.status = backlogData.status

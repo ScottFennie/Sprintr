@@ -1,5 +1,6 @@
 export class Note {
   constructor(noteData) {
+    this.id = noteData.id
     this.body = noteData.body
     this.backlogId = noteData.backlogId
     this.projectId = noteData.projectId
