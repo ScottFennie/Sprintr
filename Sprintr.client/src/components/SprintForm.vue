@@ -38,7 +38,7 @@ import Pop from '../utils/Pop'
 import { sprintsService } from '../services/SprintsService'
 export default {
   setup() {
-    const route = useRoute
+    const route = useRoute()
     const editable = ref({})
     return {
       editable,
