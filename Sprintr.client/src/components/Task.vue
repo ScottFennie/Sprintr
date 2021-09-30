@@ -52,7 +52,7 @@
               </div>
             </h2>
           </div>
-        </div></h2>
+        </div>
       </div>
     </div>
   </div>
