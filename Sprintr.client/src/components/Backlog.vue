@@ -25,7 +25,7 @@
                     </div>
                     <div class="py-2 col-2 d-flex justify-content-between">
                       <div class="morinfo">
-                        <button class="px-3 py-0 btn button-color text-white" :data-bs-target="'#project-modal-' + backlog.id" data-bs-toggle="modal" @click="getCurrentBacklog(backlog.id)">
+                        <button class="px-3 py-0 btn button-color text-white" :data-bs-target="'#project-modal-' + backlog.id" data-bs-toggle="modal" @click="getCurrentBacklog()">
                           Info
                         </button>
                       </div>
@@ -79,6 +79,7 @@ export default {
       async getCurrentBacklog() {
         try {
           await backlogsService.getCurrentBacklog(props.backlog.id)
+          this.getNotes()
         } catch (error) {
           Pop.toast(error)
         }
@@ -91,6 +92,13 @@ export default {
           Pop.toast('Backlog has been removed', 'success')
         } catch (error) {
           Pop.toast(error.message, 'error')
+        }
+      },
+      async getNotes() {
+        try {
+          await backlogsService.getNotes(props.backlog.id, props.backlog.projectId)
+        } catch (error) {
+          Pop.toast(error)
         }
       }
 

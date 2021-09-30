@@ -38,12 +38,21 @@
 <script>
 import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
+import Pop from '../utils/Pop'
+import { backlogsService } from '../services/BacklogsService'
 export default {
   setup() {
     return {
       currentBacklog: computed(() => AppState.currentBacklog),
       tasks: computed(() => AppState.tasks),
-      notes: computed(() => AppState.notes)
+      notes: computed(() => AppState.currentNotes),
+      async getNotesByBacklog() {
+        try {
+          await backlogsService.getNotesByBacklog(this.currentBacklog.id, this.backlogsService.projectId)
+        } catch (error) {
+          Pop.toast(error)
+        }
+      }
     }
   }
 }

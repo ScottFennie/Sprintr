@@ -1,5 +1,6 @@
 import { AppState } from '../AppState'
 import { Backlog } from '../models/Backlog'
+import { Note } from '../models/Note'
 import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
 
@@ -26,6 +27,20 @@ class BacklogsService {
     const res = await api.delete(`api/projects/${projectId}/backlog/` + backlogId)
     logger.log('delete backlog', res)
     AppState.backlogs = AppState.backlogs.filter(b => b.id !== backlogId)
+  }
+
+  async createNote(backlogId, projectId, backlogData) {
+    const res = await api.post(`api/projects/${projectId}/notes`, backlogData)
+    logger.log('create new note', res)
+    AppState.notes.push(new Note(res.data))
+  }
+
+  async getNotes(backlogId, projectId) {
+    const res = await api.get(`api/projects/${projectId}/notes`)
+    AppState.notes = res.data.map(n => new Note(n))
+    AppState.currentNotes = AppState.notes.filter(n => n.backlogItemId === backlogId)
+
+    logger.log('this is the notes for this backlog', AppState.notes)
   }
 }
 
