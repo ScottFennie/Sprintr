@@ -60,10 +60,11 @@
 <script>
 import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
+import { Sprint } from '../models/Sprint'
 export default {
   props: {
     sprint: {
-      type: Object,
+      type: Sprint,
       required: true
     }
   },
