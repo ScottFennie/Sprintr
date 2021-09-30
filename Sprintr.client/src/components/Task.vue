@@ -1,34 +1,23 @@
 <template>
   <div class="mx-2">
-    <div class="row my-3 py-3 rounded p-border shadow-sm">
-      <div class="col-12">
-        <div class="accordion bg-white" id="accordionFlushExample">
-          <div class="no-border accordion-item bg-white">
-            <h2 class="accordion-header" id="flush-headingOne">
-              <div class="accordion collapsed"
-                   type="button"
-                   data-bs-toggle="collapse"
-                   :data-bs-target="'#backlogAccord' + task.id"
-                   aria-expanded="false"
-                   aria-controls="flush-collapseOne"
-              >
-                <div class="itemscontainer-fluid">
-                  <div class="row">
-                    <div class="py-2 col-md-4">
-                      <h5>{{ task.name }}</h5>
-                    </div>
-                    <div class="py-2 col-md-4">
-                      <h5>{{ task.weight }}</h5>
-                    </div>
-                    <div class="py-2 col-2 d-flex justify-content-between">
-                      <div class="icon on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == sprint.creatorId">
-                        <i class="mdi mdi-close text-danger f-20 selectable" @click="removeTask()" title="Remove Task"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+    <div class="items container-fluid">
+      <div class="row">
+        <div class="py-2 col-md-4">
+          <h5>{{ task.name }}</h5>
+        </div>
+        <div class="py-2 col-md-4">
+          <h5>{{ task.weight }}</h5>
+        </div>
+        <div class="py-2 col-2 d-flex justify-content-between">
+          <div>
+            <form>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
               </div>
-            </h2>
+            </form>
+          </div>
+          <div class="icon on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == sprint.creatorId">
+            <i class="mdi mdi-close text-danger f-20 selectable" title="Remove Task"></i>
           </div>
         </div>
       </div>
