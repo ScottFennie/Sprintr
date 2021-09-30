@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="handleSubmit()" class="mb-3">
+  <form @submit.prevent="createTask()" class="mb-3">
     <div class="row">
       <div class="col-12">
         <h5 class="mb-2 t-color">
@@ -15,7 +15,7 @@
       </div>
       <div class="col-12">
         <div class="input-group mb-3">
-          <input type="text"
+          <input type="number"
                  class="form-control bg-white"
                  name="weight"
                  placeholder="Add weight"
@@ -41,6 +41,7 @@ import { tasksService } from '../services/TasksService'
 import { useRoute } from 'vue-router'
 import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
+import { backlogsService } from '../services/BacklogsService'
 export default {
   setup() {
     const route = useRoute()
@@ -48,15 +49,13 @@ export default {
     return {
       editable,
       currentBacklog: computed(() => AppState.currentBacklog),
-      async handleSubmit() {
+      async createTask() {
         try {
-          if (editable.value) {
-            editable.value.backlogItemId = this.currentBacklog.id
-            await tasksService.createTask(editable.value, route.params.projectId)
-            Pop.toast('Task is Created', 'success')
-          }
+          editable.value.backlogItemId = this.currentBacklog.id
+          editable.value.projectId = this.currentBacklog.projectId
+          await backlogsService.createTask(this.currentBacklog.id, this.currentBacklog.projectId, editable.value)
         } catch (error) {
-          Pop.toast(error.message, 'error')
+          Pop.toast(error)
         }
       }
 

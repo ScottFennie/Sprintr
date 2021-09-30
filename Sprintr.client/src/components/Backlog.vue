@@ -92,6 +92,7 @@ export default {
         try {
           await backlogsService.getCurrentBacklog(props.backlog.id)
           this.getNotes()
+          this.getTasks()
         } catch (error) {
           Pop.toast(error)
         }
@@ -109,6 +110,13 @@ export default {
       async getNotes() {
         try {
           await backlogsService.getNotes(props.backlog.id, props.backlog.projectId)
+        } catch (error) {
+          Pop.toast(error)
+        }
+      },
+      async getTasks() {
+        try {
+          await backlogsService.getTasks(props.backlog.id, props.backlog.projectId)
         } catch (error) {
           Pop.toast(error)
         }

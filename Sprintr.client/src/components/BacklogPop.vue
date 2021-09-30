@@ -44,8 +44,8 @@ export default {
   setup() {
     return {
       currentBacklog: computed(() => AppState.currentBacklog),
-      tasks: computed(() => AppState.tasks),
       notes: computed(() => AppState.currentNotes),
+      tasks: computed(() => AppState.currentTasks),
       async getNotesByBacklog() {
         try {
           await backlogsService.getNotesByBacklog(this.currentBacklog.id, this.backlogsService.projectId)

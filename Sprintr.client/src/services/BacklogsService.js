@@ -1,6 +1,7 @@
 import { AppState } from '../AppState'
 import { Backlog } from '../models/Backlog'
 import { Note } from '../models/Note'
+import { Task } from '../models/Task'
 import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
 
@@ -40,6 +41,23 @@ class BacklogsService {
     logger.log('create new note', res)
     AppState.notes.push(new Note(res.data))
     AppState.currentNotes.push(new Note(res.data))
+  }
+
+  async createTask(backlogId, projectId, backlogData) {
+    logger.log('this is the PROJECT ID', projectId)
+    const res = await api.post(`api/projects/${projectId}/tasks`, backlogData)
+    logger.log('create new task', res)
+    AppState.tasks.push(new Task(res.data))
+    AppState.currentTasks.push(new Task(res.data))
+  }
+
+  async getTasks(backlogId, projectId) {
+    AppState.currentTasks = []
+    const res = await api.get(`api/projects/${projectId}/tasks`)
+    AppState.tasks = res.data.map(t => new Task(t))
+    AppState.currentTasks = AppState.tasks.filter(t => t.backlogItemId === backlogId)
+
+    logger.log('These are the tasks', AppState.currentTasks)
   }
 
   async getNotes(backlogId, projectId) {
