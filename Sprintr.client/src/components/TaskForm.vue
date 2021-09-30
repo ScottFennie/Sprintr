@@ -1,14 +1,19 @@
 <template>
-  <div class="container-fluid mb-3">
+  <div class="mb-3">
     <div class="row">
-      <div class="col-lg-10">
-        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+      <div class="col-12">
+        <h5 class="mb-2 t-color">
+          Tasks
+        </h5>
+        <input type="text" class="form-control bg-white mb-1" id="exampleFormControlInput1" placeholder="Type task here">
       </div>
-      <div class="col-lg-2">
-        <div class="mb-3"></div>
-        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <div class="col-10">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control bg-white" placeholder="Add weight" aria-label="Recipient's username" aria-describedby="button-addon2">
+          <button class="btn button-color text-white" type="button" id="button-addon2">
+            Add Task
+          </button>
+        </div>
       </div>
     </div>
   </div>
