@@ -14,14 +14,15 @@
               >
                 <div class="itemscontainer-fluid">
                   <div class="row">
-                    <div class="py-2 col-4">
+                    <div class="py-2 col-md-4">
                       <h5>{{ sprint.name }}</h5>
                     </div>
-                    <div class="py-2 col-4">
-                      <h5>Weight - 5</h5>
+                    <div class="py-2 col-md-2">
+                      <h5>{{ sprint.totalWeight }}</h5>
                     </div>
-                    <div class="py-2 col-2">
-                      <h5>Sprint 2</h5>
+                    <div class="py-2 col-md-4">
+                      <h5>Start Date: {{ new Date(sprint.startDate).toDateString() }}</h5>
+                      <h5>End Date: {{ new Date(sprint.endDate).toDateString() }}</h5>
                     </div>
                     <div class="py-2 col-2 d-flex justify-content-between">
                       <div class="morinfo">

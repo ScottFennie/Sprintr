@@ -14,20 +14,25 @@
       </div>
     </div>
     <div class="row mt-3 card shadow-sm">
-      <div class="col pt-3 d-flex justify-content-between border-bottom border-2 border-light">
+      <div class="pt-3 d-flex justify-content-between border-bottom border-2 border-light">
         <div>
           <h5 class="ms-2">
-            Name
+            Name:
           </h5>
         </div>
         <div>
           <h5>
-            Time Frame
+            Total Weight:
           </h5>
         </div>
         <div>
-          <h5 class="ms-3">
-            Task
+          <h5>
+            Time Frame:
+          </h5>
+        </div>
+        <div>
+          <h5>
+            Info:
           </h5>
         </div>
       </div>

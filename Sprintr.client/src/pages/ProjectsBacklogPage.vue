@@ -18,17 +18,22 @@
       <div class="col pt-3 d-flex justify-content-between border-bottom border-2 border-light">
         <div>
           <h5 class="ms-2">
-            Name
+            Name:
           </h5>
         </div>
         <div>
           <h5>
-            Weight
+            Weight:
           </h5>
         </div>
         <div>
           <h5 class="ms-3">
-            Sprint
+            Sprint:
+          </h5>
+        </div>
+        <div>
+          <h5>
+            Info:
           </h5>
         </div>
       </div>

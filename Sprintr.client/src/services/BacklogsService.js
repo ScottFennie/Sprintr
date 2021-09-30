@@ -73,6 +73,7 @@ class BacklogsService {
     const res = await api.delete(`api/projects/${projectId}/notes/` + noteId)
     logger.log('remove note', res)
     AppState.notes = AppState.notes.filter(n => n.id !== noteId)
+    AppState.currentNotes = AppState.notes.filter(n => n.id !== noteId)
   }
 }
 
