@@ -21,7 +21,7 @@
       </div>
       <div class="col-12">
         <div class="div card shadow">
-          <!-- task list items will go here -->
+          <Task :task="t" v-for="t in tasks" :key="t.id" />
         </div>
       </div>
       <div class="center d-flex">
@@ -38,7 +38,7 @@
       </div>
       <div class="col-12">
         <div class="div card shadow">
-          <!-- task notes will go here -->
+          <Note :note="n" v-for="n in notes" :key="n.id" />
         </div>
       </div>
     </div>
@@ -51,10 +51,11 @@ import { AppState } from '../AppState'
 export default {
   setup() {
     return {
-      currentBacklog: computed(() => AppState.currentBacklog)
+      currentBacklog: computed(() => AppState.currentBacklog),
+      tasks: computed(() => AppState.tasks),
+      notes: computed(() => AppState.notes)
     }
   }
-
 }
 </script>
 
