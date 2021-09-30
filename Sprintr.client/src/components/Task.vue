@@ -27,10 +27,32 @@
                     </div>
                   </div>
                 </div>
+                <div class="items container-fluid">
+                  <div class="row">
+                    <div class="py-2 col-md-4">
+                      <h5>{{ task.name }}</h5>
+                    </div>
+                    <div class="py-2 col-md-4">
+                      <h5>{{ task.weight }}</h5>
+                    </div>
+                    <div class="py-2 col-2 d-flex justify-content-between">
+                      <div>
+                        <form>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                          </div>
+                        </form>
+                      </div>
+                      <div class="icon on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == sprint.creatorId">
+                        <i class="mdi mdi-close text-danger f-20 selectable" title="Remove Task"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </h2>
           </div>
-        </div>
+        </div></h2>
       </div>
     </div>
   </div>
