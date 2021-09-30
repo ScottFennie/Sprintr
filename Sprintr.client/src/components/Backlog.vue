@@ -30,6 +30,9 @@
                         </button>
                       </div>
                       <div class="icon on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == backlog.creatorId">
+                        <i class="mdi mdi-pencil text-info f-20 selectable" data-bs-toggle="modal" data-bs-target="#backlog-modal" title="Edit Backlog"></i>
+                      </div>
+                      <div class="icon on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == backlog.creatorId">
                         <i class="mdi mdi-close text-danger f-20 selectable" @click="removeBacklog()" title="Remove Backlog"></i>
                       </div>
                     </div>
@@ -53,6 +56,15 @@
     </template>
     <template #modal-body>
       <BacklogPop />
+    </template>
+  </Modal>
+
+  <Modal :id="'backlog-modal-' + backlog.id">
+    <template #modal-title>
+      <h3>Backlog</h3>
+    </template>
+    <template #modal-body>
+      <BacklogForm />
     </template>
   </Modal>
 </template>
