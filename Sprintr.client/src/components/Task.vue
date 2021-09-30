@@ -20,8 +20,8 @@
                     <div class="py-2 col-md-4">
                       <h5>{{ task.weight }}</h5>
                     </div>
-                    <div class="py-2 col-2 d-flex justify-content-between">
-                      <div class="icon on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == sprint.creatorId">
+                    <div class="py-2 col-md-2 d-flex justify-content-between">
+                      <div class="icon on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == task.creatorId">
                         <i class="mdi mdi-close text-danger f-20 selectable" @click="removeTask()" title="Remove Task"></i>
                       </div>
                     </div>

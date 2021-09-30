@@ -48,6 +48,12 @@ class BacklogsService {
 
     logger.log('this is the notes for this backlog', AppState.notes)
   }
+
+  async removeNote(noteId, projectId) {
+    const res = await api.delete(`api/projects/${projectId}/notes/` + noteId)
+    logger.log('remove note', res)
+    AppState.notes = AppState.notes.filter(n => n.id !== noteId)
+  }
 }
 
 export const backlogsService = new BacklogsService()

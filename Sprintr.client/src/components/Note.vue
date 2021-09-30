@@ -11,11 +11,19 @@
     <div class="col-12">
       <p>{{ note.body }}</p>
     </div>
+    <div class="icon on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == note.creatorId">
+      <i class="mdi mdi-close text-danger f-20 selectable" @click="removeNote()" title="Remove Note"></i>
+    </div>
   </div>
 </template>
 
 <script>
+import { computed } from '@vue/runtime-core'
+import { AppState } from '../AppState'
 import { Note } from '../models/Note'
+import { useRoute } from 'vue-router'
+import Pop from '../utils/Pop'
+import { backlogsService } from '../services/BacklogsService'
 export default {
   props: {
     note: {
@@ -23,8 +31,20 @@ export default {
       required: true
     }
   },
-  setup() {
+  setup(props) {
+    const route = useRoute()
     return {
+      account: computed(() => AppState.account),
+      async removeNote() {
+        try {
+          const yes = await Pop.confirm('are you sure <b>you</b> want to remove this <em>Task</em>?')
+          if (!yes) { return }
+          await backlogsService.removeNote(props.note.id, route.params.projectId)
+          Pop.toast('Task has been removed', 'success')
+        } catch (error) {
+          Pop.toast(error.message, 'error')
+        }
+      }
 
     }
   }
