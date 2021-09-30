@@ -9,7 +9,6 @@
                value="pending"
                autocomplete="off"
                v-model="editable.status"
-               checked
         >
         <label class="btn btn-outline-primary" for="btnradio4">Pending</label>
 
