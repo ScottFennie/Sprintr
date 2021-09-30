@@ -30,4 +30,8 @@ export default {
 .t-color{
   color: #CF40AE;
 }
+
+.m-width{
+width: 50vw;
+}
 </style>
