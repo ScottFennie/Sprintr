@@ -58,6 +58,18 @@ class BacklogsService {
     AppState.currentTasks = AppState.tasks.filter(t => t.backlogItemId === backlogId)
 
     logger.log('These are the tasks', AppState.currentTasks)
+
+    const back = AppState.backlogs.find(b => b.id === backlogId)
+
+    let total = 0
+
+    if (AppState.currentTasks.length > 0) {
+      for (let i = 0; i < AppState.currentTasks.length; i++) {
+        total += AppState.currentTasks[i].weight
+      }
+      back.totalWeight = total
+      logger.log('the final total', back.totalWeight)
+    }
   }
 
   async getNotes(backlogId, projectId) {

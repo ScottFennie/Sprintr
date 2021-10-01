@@ -9,7 +9,7 @@
           <h1 class="text-center">
             Project
           </h1>
-          <div class="col-md-1 on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == project?.creatorId">
+          <div class=" on-hover d-flex justify-content-center align-content-start p-0" v-if="account.id == project?.creatorId">
             <i class="mdi mdi-close text-danger f-20 selectable" @click="removeProject()" title="Remove Project"></i>
           </div>
           <div class="backlogs">

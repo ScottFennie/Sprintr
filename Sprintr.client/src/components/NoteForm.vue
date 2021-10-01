@@ -4,7 +4,7 @@
       <h5 class="mb-2 t-color">
         Notes
       </h5>
-      <input v-model="editable.body" type="text" class="form-control bg-white mb-1" id="exampleFormControlInput1" placeholder="Type task here">
+      <input v-model="editable.body" type="text" class="form-control bg-white mb-1" id="exampleFormControlInput1" placeholder="Type note here">
     </div>
   </form>
 </template>

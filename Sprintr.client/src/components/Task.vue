@@ -6,7 +6,7 @@
           <h6>{{ task.name }}</h6>
         </div>
         <div class="py-2 col-4">
-          <h5>{{ task.weight }}</h5>
+          <h6><i class="t-color mdi mdi-weight f-16"></i> {{ task.weight }}</h6>
         </div>
         <div class="py-2 col-4 d-flex justify-content-between">
           <div>

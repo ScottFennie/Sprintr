@@ -13,6 +13,9 @@
         <div class="col-6 d-flex justify-content-end">
         </div>
       </div>
+      <div class="col-12 text-center">
+        <h5> {{ currentBacklog.totalWeight }}</h5>
+      </div>
       <div class="col-12">
         <div class="div">
           <TaskForm />

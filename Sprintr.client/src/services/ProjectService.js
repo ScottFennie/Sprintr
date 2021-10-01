@@ -25,8 +25,8 @@ class ProjectService {
   async createProject(newProject) {
     const res = await api.post('api/projects', newProject)
     logger.log('heres the new project', res)
-    router.push({ name: 'Projects.Backlog', params: { projectId: res.data.id } })
     AppState.projects.push(res.data)
+    router.push({ name: 'Projects.Backlog', params: { projectId: res.data.id } })
   }
 
   async removeProject(proId) {
