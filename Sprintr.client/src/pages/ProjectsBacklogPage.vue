@@ -8,9 +8,9 @@
         <p> your lists of backlogs </p>
       </div>
       <div class="col-md-6 d-flex align-items-center justify-content-end">
-        <Button class="p-1 px-3 btn gradient-button gradient-button-1" data-bs-toggle="modal" data-bs-target="#backlog-modal" title="Create a Backlog">
+        <button class="p-1 px-3 btn gradient-button gradient-button-1" data-bs-toggle="modal" data-bs-target="#backlog-modal" title="Create a Backlog">
           <i class="mdi mdi-plus f-16"></i>
-        </Button>
+        </button>
       </div>
     </div>
     <!-- backlog card goes here -->

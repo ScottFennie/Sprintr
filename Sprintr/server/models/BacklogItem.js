@@ -5,6 +5,7 @@ export const BacklogItemSchema = new Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
   status: { type: String, Enum: ['pending', 'in-progress', 'review', 'done'] },
+  totalWeight: { type: Number },
   sprintId: { type: Schema.Types.ObjectId, ref: 'Sprint' },
   projectId: { type: Schema.Types.ObjectId, required: true, ref: 'Project' },
   creatorId: { type: Schema.Types.ObjectId, required: true, ref: 'Account' }

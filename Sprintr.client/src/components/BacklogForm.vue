@@ -4,7 +4,7 @@
       <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic radio toggle button group">
         <input type="radio"
                class="btn-check"
-               name="btnradio"
+               name="btnradio4"
                id="btnradio4"
                value="pending"
                autocomplete="off"
@@ -15,7 +15,7 @@
 
         <input type="radio"
                class="btn-check"
-               name="btnradio"
+               name="btnradio3"
                id="btnradio3"
                value="in-progress"
                autocomplete="off"
@@ -25,7 +25,7 @@
 
         <input type="radio"
                class="btn-check"
-               name="btnradio"
+               name="btnradio1"
                id="btnradio1"
                value="review"
                autocomplete="off"
@@ -35,7 +35,7 @@
 
         <input type="radio"
                class="btn-check"
-               name="btnradio"
+               name="btnradio2"
                id="btnradio2"
                value="done"
                autocomplete="off"
@@ -48,14 +48,14 @@
              class="form-control bg-secondary"
              name="name..."
              placeholder="name"
-             v-model="editable.name"
+             :v-model="editable.name"
       >
       <label for="description" class="sr-only"></label>
       <input type="text"
              class="form-control bg-secondary"
              name="description"
              placeholder="description..."
-             v-model="editable.description"
+             :v-model="editable.description"
       >
     </div>
     <div class="button-group pt-3">
