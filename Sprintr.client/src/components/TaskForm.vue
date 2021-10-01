@@ -37,14 +37,12 @@
 <script>
 import { ref } from '@vue/reactivity'
 import Pop from '../utils/Pop'
-import { tasksService } from '../services/TasksService'
 import { useRoute } from 'vue-router'
 import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { backlogsService } from '../services/BacklogsService'
 export default {
   setup() {
-    const route = useRoute()
     const editable = ref({})
     return {
       editable,

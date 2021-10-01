@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="icon on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == task.creatorId">
-            <i class="mdi mdi-close text-danger f-20 selectable" title="Remove Task"></i>
+            <i class="mdi mdi-close text-danger f-20 selectable" @click="removeTask()" title="Remove Task"></i>
           </div>
         </div>
       </div>
@@ -35,6 +35,7 @@ import { AppState } from '../AppState'
 import { Task } from '../models/Task'
 import Pop from '../utils/Pop'
 import { backlogsService } from '../services/BacklogsService'
+import { useRoute } from 'vue-router'
 export default {
   props: {
     task: {
@@ -44,8 +45,19 @@ export default {
   },
 
   setup(props) {
+    const route = useRoute()
     return {
       account: computed(() => AppState.account),
+      async removeTask() {
+        try {
+          const yes = await Pop.confirm('are you sure <b>you</b> want to remove this <em>Task</em>?')
+          if (!yes) { return }
+          await backlogsService.removeTask(props.task.id, route.params.projectId)
+          Pop.toast('Task has been removed', 'success')
+        } catch (error) {
+          Pop.toast(error.message, 'error')
+        }
+      },
       async checkBox() {
         try {
           const task = props.task

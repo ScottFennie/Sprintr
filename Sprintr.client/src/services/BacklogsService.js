@@ -76,6 +76,13 @@ class BacklogsService {
     AppState.currentNotes = AppState.notes.filter(n => n.id !== noteId)
   }
 
+  async removeTask(taskId, projectId) {
+    const res = await api.delete(`api/projects/${projectId}/tasks/` + taskId)
+    logger.log('remove task', res)
+    AppState.tasks = AppState.tasks.filter(n => n.id !== taskId)
+    AppState.currentTasks = AppState.tasks.filter(n => n.id !== taskId)
+  }
+
   async checkBox(checkId, projectId, checkData) {
     const res = await api.put(`api/projects/${projectId}/tasks/` + checkId, checkData)
     logger.log('chek box res', res)
