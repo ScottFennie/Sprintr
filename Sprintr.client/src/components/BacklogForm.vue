@@ -48,14 +48,14 @@
              class="form-control bg-secondary"
              name="name..."
              placeholder="name"
-             :v-model="editable.name"
+             v-model="editable.name"
       >
       <label for="description" class="sr-only"></label>
       <input type="text"
              class="form-control bg-secondary"
              name="description"
              placeholder="description..."
-             :v-model="editable.description"
+             v-model="editable.description"
       >
     </div>
     <div class="button-group pt-3">

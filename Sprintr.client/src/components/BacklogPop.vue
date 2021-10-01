@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="col-12 text-center">
-        <h5> {{ currentBacklog.totalWeight }}</h5>
+        <h5><i class="t-color mdi mdi-weight f-20"></i> {{ currentBacklog.totalWeight }}</h5>
       </div>
       <div class="col-12">
         <div class="div">
