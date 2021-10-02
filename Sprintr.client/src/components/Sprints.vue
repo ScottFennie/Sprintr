@@ -40,7 +40,9 @@
             </h2>
             <div :id="'backlogAccord' + sprint.id" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
               <div class="accordion-body">
-                Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.
+                <p>
+                  more info goes here
+                </p>
               </div>
             </div>
           </div>
