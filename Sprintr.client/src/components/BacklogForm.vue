@@ -1,48 +1,20 @@
 <template>
   <form @submit.prevent="handleSubmit()">
     <div class="form-group">
-      <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio"
-               class="btn-check"
-               name="btnradio4"
-               id="btnradio4"
-               value="pending"
-               autocomplete="off"
-               v-model="editable.status"
-               checked
-        >
-        <label class="btn btn-outline-primary" for="btnradio4">Pending</label>
-
-        <input type="radio"
-               class="btn-check"
-               name="btnradio3"
-               id="btnradio3"
-               value="in-progress"
-               autocomplete="off"
-               v-model="editable.status"
-        >
-        <label class="btn btn-outline-primary" for="btnradio3">In-progress</label>
-
-        <input type="radio"
-               class="btn-check"
-               name="btnradio1"
-               id="btnradio1"
-               value="review"
-               autocomplete="off"
-               v-model="editable.status"
-        >
-        <label class="btn btn-outline-primary" for="btnradio1">Review</label>
-
-        <input type="radio"
-               class="btn-check"
-               name="btnradio2"
-               id="btnradio2"
-               value="done"
-               autocomplete="off"
-               v-model="editable.status"
-        >
-        <label class="btn btn-outline-primary" for="btnradio2">Done</label>
-      </div>
+      <label for="status" class="">Status:</label>
+      <select
+        v-model="editable.status"
+        name="status"
+        id="status"
+        required
+        class="form-control bg-secondary"
+      >
+        <option disabled selected value="" />
+        <option>pending</option>
+        <option>in-progress</option>
+        <option>review</option>
+        <option>done</option>
+      </select>
       <label for="name" class="sr-only"></label>
       <input type="text"
              class="form-control bg-secondary"
@@ -79,9 +51,12 @@ export default {
       editable,
       async handleSubmit() {
         try {
-          if (editable.value) {
-            await backlogsService.createBacklog(editable.value, route.params.projectId)
+          if (editable.value.id) {
+            await backlogsService.editBacklog(editable.value, route.params.projectId)
             Pop.toast('Backlog item edited', 'success')
+          } else {
+            await backlogsService.createBacklog(editable.value, route.params.projectId)
+            Pop.toast('Backlog item Created', 'success')
           }
         } catch (error) {
           Pop.toast(error.message, 'error')
