@@ -7,6 +7,48 @@
       <div class="col-12 text-center">
         <p>{{ currentBacklog.status }}</p>
       </div>
+      <div class="col-12" v-if="account.id === currentBacklog.creatorId">
+        <form @submit.prevent="handleSubmit()">
+          <div class="form-group">
+            <label for="status" class="">Status:</label>
+            <select
+              v-model="editable.status"
+              name="status"
+              placeholder="Change Status"
+              id="status"
+              required
+              class="form-control bg-white"
+            >
+              <option disabled selected value="" />
+              <option>pending</option>
+              <option>in-progress</option>
+              <option>review</option>
+              <option>done</option>
+            </select>
+            <label for="name" class="sr-only"></label>
+            <input type="text"
+                   class="form-control bg-white"
+                   name="name..."
+                   placeholder="Edit Name"
+                   id="name"
+                   v-model="editable.name"
+            >
+            <label for="description" class="sr-only"></label>
+            <input type="text"
+                   class="form-control bg-white"
+                   name="description"
+                   placeholder="Edit Description"
+                   id="description"
+                   v-model="editable.description"
+            >
+          </div>
+          <div class="button-group pt-3">
+            <button type="submit" class="p-1 px-3 btn gradient-button gradient-button-1" title="Create a Backlog">
+              Edit
+            </button>
+          </div>
+        </form>
+      </div>
       <div class="center d-flex">
         <div class="col-6">
         </div>
@@ -39,21 +81,36 @@
 </template>
 
 <script>
-import { computed } from '@vue/runtime-core'
+import { computed, ref, watchEffect } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import Pop from '../utils/Pop'
 import { backlogsService } from '../services/BacklogsService'
+import Backlog from './Backlog.vue'
+import { useRoute } from 'vue-router'
 export default {
+  components: { Backlog },
   setup() {
+    const route = useRoute()
+    const editable = ref({})
     return {
+      editable,
       currentBacklog: computed(() => AppState.currentBacklog),
       notes: computed(() => AppState.currentNotes),
       tasks: computed(() => AppState.currentTasks),
+      account: computed(() => AppState.account),
       async getNotesByBacklog() {
         try {
           await backlogsService.getNotesByBacklog(this.currentBacklog.id, this.backlogsService.projectId)
         } catch (error) {
           Pop.toast(error)
+        }
+      },
+      async handleSubmit() {
+        try {
+          await backlogsService.editBacklog(editable.value, route.params.projectId, this.currentBacklog.id)
+          Pop.toast('Backlog item edited', 'success')
+        } catch (error) {
+          Pop.toast(error.message, 'error')
         }
       }
     }

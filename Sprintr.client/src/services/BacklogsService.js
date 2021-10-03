@@ -24,10 +24,12 @@ class BacklogsService {
     logger.log('appstate current backlog', AppState.currentBacklog)
   }
 
-  async editBacklog(backlogData, projectId) {
-    const res = await api.put(`api/projects/${projectId}/backlog/${backlogData.id}`, backlogData)
+  async editBacklog(backlogData, projectId, backlogId) {
+    const res = await api.put(`api/projects/${projectId}/backlog/${backlogId}`, backlogData)
     logger.log('edit', res)
-    AppState.backlogs = new Backlog(res.data)
+    AppState.backlog = new Backlog(res.data)
+    this.getBacklogs(projectId)
+    this.getCurrentBacklog(backlogId)
   }
 
   async removeBacklog(backlogId, projectId) {
@@ -92,12 +94,22 @@ class BacklogsService {
     const res = await api.delete(`api/projects/${projectId}/tasks/` + taskId)
     logger.log('remove task', res)
     AppState.tasks = AppState.tasks.filter(n => n.id !== taskId)
-    AppState.currentTasks = AppState.tasks.filter(n => n.id !== taskId)
+    AppState.currentTasks = AppState.currentTasks.filter(n => n.id !== taskId)
   }
 
   async checkBox(checkId, projectId, checkData) {
     const res = await api.put(`api/projects/${projectId}/tasks/` + checkId, checkData)
     logger.log('chek box res', res)
+  }
+
+  async getCurrentSprint(sprintId) {
+    AppState.currentSprint = AppState.sprints.find(s => s.id === sprintId)
+  }
+
+  async addToSprint(backlogId) {
+    AppState.currentBacklog = AppState.backlogs.find(b => b.id === backlogId)
+    AppState.currentBacklog.sprintId = AppState.currentSprint.id
+    logger.log('here is the sprint stuff', AppState.currentBacklog)
   }
 }
 

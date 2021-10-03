@@ -18,10 +18,10 @@
                       <h5>{{ backlog.name }}</h5>
                     </div>
                     <div class="py-2 col-4">
-                      <h5><i class="t-color mdi mdi-weight f-16"></i> {{ backlog.totalWeight }}</h5>
+                      <h5><i class="t-color mdi mdi-weight f-16"></i> {{ backlog.totalWeight }} </h5>
                     </div>
                     <div class="py-2 col-2">
-                      <h5>{{ backlog.sprint }}</h5>
+                      <h5>{{ backlog.sprintId }}</h5>
                     </div>
                     <div class="py-2 col-2 d-flex justify-content-between">
                       <div class="morinfo">
@@ -29,9 +29,7 @@
                           Info
                         </button>
                       </div>
-                      <div class="icon on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == backlog.creatorId">
-                        <i class="mdi mdi-pencil text-info f-20 selectable" data-bs-toggle="modal" :data-bs-target="'#backlog-modal-' + backlog.id" title="Edit Backlog"></i>
-                      </div>
+                      <div></div>
                       <div class="icon on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == backlog.creatorId">
                         <i class="mdi mdi-close text-danger f-20 selectable" @click="removeBacklog()" title="Remove Backlog"></i>
                       </div>
@@ -42,7 +40,8 @@
             </h2>
             <div :id="'backlogAccord' + backlog.id" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
               <div class="accordion-body">
-                <p>Tasks go here</p>
+                <h6>Description-</h6>
+                <p>{{ backlog.description }}</p>
               </div>
             </div>
           </div>
@@ -84,6 +83,8 @@ import Pop from '../utils/Pop'
 import { backlogsService } from '../services/BacklogsService'
 import { Backlog } from '../models/Backlog'
 import { useRoute } from 'vue-router'
+import { Task } from '../models/Task'
+import { logger } from '../utils/Logger'
 export default {
   props: {
     backlog: {
@@ -95,6 +96,16 @@ export default {
     const route = useRoute()
     return {
       account: computed(() => AppState.account),
+      tasks: computed(() => AppState.tasks.filter(t => t.backlogItemId === props.backlog.id)),
+
+      totalWeight(props) {
+        let total = 0
+        for (let i = 0; i < this.tasks.length; i++) {
+          total += this.tasks[i].weight
+          logger.log('total task weight', total)
+        }
+        return total
+      },
 
       async getCurrentBacklog() {
         try {

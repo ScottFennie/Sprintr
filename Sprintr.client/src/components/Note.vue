@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid p-0 m-0">
-    <div class="row card p-0 m-0">
+    <div class="row my-2 card p-0 m-0">
       <div class="col-6 d-flex align-items-center m-0">
         <div class="imagename">
           <img :src="note.creator.picture" class="size rounded-circle py-2" alt="">
@@ -9,7 +9,7 @@
           <h5>{{ note.creator.name }}</h5>
         </div>
       </div>
-      <div class="col-6 d-flex align-items-center pt-4 m-0">
+      <div class="col-6 d-flex align-items-center pt-1 m-0">
         <p>{{ note.body }}</p>
       </div>
       <div class="icon on-hover d-flex justify-content-end align-content-start p-0" v-if="account.id == note.creatorId">

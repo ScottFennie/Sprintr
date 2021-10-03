@@ -7,7 +7,7 @@
         </h6>
       </div>
       <div class="col-md-4 d-flex justify-content-center" @click="goToProjectPage(project.id)">
-        <img :src="account.picture" alt="" class="creatorpic">
+        <img :src="project.creator?.picture" alt="" class="creatorpic">
       </div>
       <div class="col-md-3 d-flex align-items-center justify-content-end" @click="goToProjectPage(project.id)">
         <h6 class="pe-1">

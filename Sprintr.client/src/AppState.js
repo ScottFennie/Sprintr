@@ -15,5 +15,6 @@ export const AppState = reactive({
   notes: [],
   note: null,
   currentNotes: [],
-  currentTasks: []
+  currentTasks: [],
+  currentSprint: []
 })

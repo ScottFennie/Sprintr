@@ -1,6 +1,6 @@
 <template>
   <div class="mx-2">
-    <div class="row my-3 py-3 rounded p-border shadow-sm">
+    <div class="row my-3 py-3 rounded p-border shadow-sm" @click="getCurrentSprint(sprint.id)">
       <div class="col-12">
         <div class="accordion bg-white" id="accordionFlushExample">
           <div class="no-border accordion-item bg-white">
@@ -40,9 +40,11 @@
             </h2>
             <div :id="'backlogAccord' + sprint.id" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
               <div class="accordion-body">
-                <p>
-                  more info goes here
-                </p>
+                <div class="container-fluid">
+                  <div class="row">
+                    <BacklogSprint :backlog="b" v-for="b in backlogs" :key="b.id" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -67,6 +69,7 @@ import { Sprint } from '../models/Sprint'
 import { useRoute } from 'vue-router'
 import Pop from '../utils/Pop'
 import { sprintsService } from '../services/SprintsService'
+import { backlogsService } from '../services/BacklogsService'
 export default {
   props: {
     sprint: {
@@ -77,6 +80,7 @@ export default {
   setup(props) {
     const route = useRoute()
     return {
+      backlogs: computed(() => AppState.backlogs),
       account: computed(() => AppState.account),
       async removeSprint() {
         try {
@@ -87,6 +91,9 @@ export default {
         } catch (error) {
           Pop.toast(error.message, 'error')
         }
+      },
+      async getCurrentSprint(sprintId) {
+        await backlogsService.getCurrentSprint(props.sprint.id)
       }
     }
   }

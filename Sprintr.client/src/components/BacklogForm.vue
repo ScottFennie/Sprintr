@@ -20,6 +20,7 @@
              class="form-control bg-secondary"
              name="name..."
              placeholder="name"
+             id="name"
              v-model="editable.name"
       >
       <label for="description" class="sr-only"></label>
@@ -27,6 +28,7 @@
              class="form-control bg-secondary"
              name="description"
              placeholder="description..."
+             id="description"
              v-model="editable.description"
       >
     </div>
@@ -43,10 +45,19 @@ import { ref } from '@vue/reactivity'
 import Pop from '../utils/Pop'
 import { backlogsService } from '../services/BacklogsService'
 import { useRoute } from 'vue-router'
+import { Backlog } from '../models/Backlog'
+import { watchEffect } from '@vue/runtime-core'
 export default {
-  setup() {
+  props: {
+    backlog: { type: Backlog }
+  },
+  setup(props) {
     const route = useRoute()
     const editable = ref({})
+    watchEffect(() => {
+      editable.value = { ...props.backlog }
+    })
+
     return {
       editable,
       async handleSubmit() {
@@ -56,6 +67,7 @@ export default {
             Pop.toast('Backlog item edited', 'success')
           } else {
             await backlogsService.createBacklog(editable.value, route.params.projectId)
+            editable.value = {}
             Pop.toast('Backlog item Created', 'success')
           }
         } catch (error) {
