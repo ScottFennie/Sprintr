@@ -6,7 +6,7 @@ export const ProjectSchema = new Schema({
     type: String, required: true
   },
   description: { type: String, required: true },
-  creatorId: { type: Schema.Types.ObjectId, ref: 'account', required: true }
+  creatorId: { type: Schema.Types.ObjectId, ref: 'Account', required: true }
 }, { timestamps: true, toJSON: { virtuals: true } })
 
 ProjectSchema.virtual('creator', {
