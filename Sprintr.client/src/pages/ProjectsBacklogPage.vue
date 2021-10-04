@@ -59,11 +59,13 @@ import { backlogsService } from '../services/BacklogsService'
 import Pop from '../utils/Pop'
 import { AppState } from '../AppState'
 import { useRoute } from 'vue-router'
+import { sprintsService } from '../services/SprintsService'
 export default {
   setup() {
     const route = useRoute()
     onMounted(async() => {
       try {
+        await sprintsService.getSprints(route.params.projectId)
         await backlogsService.getBacklogs(route.params.projectId)
       } catch (error) {
         Pop.toast(error.message, 'error')

@@ -21,7 +21,9 @@
                       <h5><i class="t-color mdi mdi-weight f-16"></i> {{ backlog.totalWeight }} </h5>
                     </div>
                     <div class="py-2 col-2">
-                      <h5>{{ backlog.sprintId }}</h5>
+                      <h5 v-if="sprint">
+                        <!-- {{ sprint[0].name }} -->
+                      </h5>
                     </div>
                     <div class="py-2 col-2 d-flex justify-content-between">
                       <div class="morinfo">
@@ -97,6 +99,7 @@ export default {
     return {
       account: computed(() => AppState.account),
       tasks: computed(() => AppState.tasks.filter(t => t.backlogItemId === props.backlog.id)),
+      sprint: computed(() => AppState.sprints.filter(s => s.id === props.backlog.sprintId)),
 
       totalWeight(props) {
         let total = 0

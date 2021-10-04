@@ -106,10 +106,10 @@ class BacklogsService {
     AppState.currentSprint = AppState.sprints.find(s => s.id === sprintId)
   }
 
-  async addToSprint(backlogId) {
+  async addToSprint(backlogId, projectId, backlogData) {
     AppState.currentBacklog = AppState.backlogs.find(b => b.id === backlogId)
-    AppState.currentBacklog.sprintId = AppState.currentSprint.id
-    logger.log('here is the sprint stuff', AppState.currentBacklog)
+    const res = await api.put(`api/projects/${projectId}/backlog/${backlogId}`, backlogData)
+    logger.log('here is the new sprint info', res)
   }
 }
 
