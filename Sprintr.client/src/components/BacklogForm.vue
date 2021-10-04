@@ -33,7 +33,7 @@
       >
     </div>
     <div class="button-group pt-3">
-      <button type="submit" class="p-1 px-3 btn gradient-button gradient-button-1" title="Create a Backlog">
+      <button type="submit" class="p-1 px-3 btn gradient-button gradient-button-1" title="Create a Backlog" data-bs-dismiss="modal" aria-label="Close">
         <i class="mdi mdi-plus f-16" title="Add Backlog" />
       </button>
     </div>

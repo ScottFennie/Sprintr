@@ -24,7 +24,7 @@
       >
     </div>
     <div class="button-group pt-3">
-      <button type="submit" class="p-1 px-3 btn gradient-button gradient-button-1" title="Create a Sprint">
+      <button type="submit" class="p-1 px-3 btn gradient-button gradient-button-1" title="Create a Sprint" data-bs-dismiss="modal" aria-label="Close">
         <i class="mdi mdi-plus f-16" title="Add Sprint" />
       </button>
     </div>

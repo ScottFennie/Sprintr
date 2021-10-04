@@ -25,7 +25,7 @@
           >
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary text-white mt-2">
+          <button type="submit" class="btn btn-primary text-white mt-2" data-bs-dismiss="modal" aria-label="Close">
             Post
           </button>
         </div>

@@ -4,7 +4,6 @@ import { BadRequest, Forbidden } from '../utils/Errors'
 class SprintService {
   async getSprintById(sprintId) {
     const sprint = await dbContext.Sprints.findById(sprintId)
-    await sprint.populate('sprints')
     if (!sprint) {
       throw new BadRequest('invalid sprint Id')
     }
@@ -18,7 +17,6 @@ class SprintService {
 
   async createSprint(sprintData) {
     const sprint = await dbContext.Sprints.create(sprintData)
-    await sprint.populate('sprints')
     return sprint
   }
 
